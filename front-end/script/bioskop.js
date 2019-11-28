@@ -10,7 +10,7 @@ function getStatus (access_token) {
     var url = BACK_END_BASE_URL + 'bioskop/fetch?schedule=' + getIDParams() +'&id=' + getIDFParams();
     console.log('url: ', url); 
     sendAJAXRequest(null, "GET", url, function (response) { 
-        console.log('response: ', response);
+        console.log('response: ', response.message);
         handleResponse(response);
     }, access_token);
 }

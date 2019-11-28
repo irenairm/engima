@@ -570,6 +570,7 @@ hr {
 .message-pay {
     text-align: center;
     font-weight: 500;
+    font-size: 16px;
     margin-bottom: 0;
     color: rgb(9, 121, 152);
 }
@@ -592,9 +593,17 @@ hr {
     vertical-align: middle;
     font-size: 14px;
     font-weight: 600px;
-    padding-left: 0.2rem;
-    padding-right: 0.2rem;
+    padding: 0.5rem 0.7rem;
     margin-left: 2rem;
+    margin-top: 1.4rem;
+    margin-bottom: 0rem;
+    border-radius: 5px;
+    border-color: rgb(0, 192, 236);
+    background: rgb(0, 192, 236);
+    font-family: 'Raleway';
+    font-size: 13px;
+    color: white;
+    cursor: pointer;
 }
 
 .movie-design {

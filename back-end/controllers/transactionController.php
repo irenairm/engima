@@ -96,7 +96,6 @@ class TransactionController
     
    public function render($transaction, $transaction_arr)    //$transaction_arr, $username, $connection
     {
-        // // $review = new Review($connection);
         $html .= '<div class="transaction-header">
                     Transaction History
                 </div>
@@ -118,10 +117,9 @@ class TransactionController
                         <div class="trans-detail">
                             <span class="schedule">ID Transaksi</span>
                             <span id="id_transaction">'
-                              .$movie['values']['id_transaksi']. '</span>';
-        $html  .=             
-                       ' </div>
-                        <div class="trans-detail">
+                              .$movie['values']['id_transaksi']. '</span>
+                        </div>';
+        $html  .=      ' <div class="trans-detail">
                             <span class="schedule">Status</span>
                             <span id="status_trans">'
                        .$movie['values']['status_transaksi']. ' </span>';

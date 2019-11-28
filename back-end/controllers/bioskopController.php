@@ -162,7 +162,7 @@ class BioskopController
                 <div class="seat-selection">
                 <div class="seat-row">';
 
-        foreach ($seats_arr as $seat) {
+        foreach ($seats_arr as $seat) 
         {   
             if(($seat['id_seat']) % 10 == 0)
             {
@@ -220,7 +220,7 @@ class BioskopController
                             <h2 class="message-pay">Please do the payment transaction</h2>
                             <p class="message-directing" id="id_transaksi">'. $transactions[1]['id_transaksi'] .'</p>
                             <p class="message-directing" id="no_va">'. $transactions[1]['nomor_akun_virtual'] .'</p>
-                            <button class="button-buy mod" id="modal-button" type="submit">Go to transaction history</button>
+                            <button class="mod" id="modal-button" type="submit">Go to transaction history</button>
                         </div>
                     </div>
                 </div>
@@ -231,7 +231,7 @@ class BioskopController
      returnResponse('200', $html);   
     }
 
-    } 
+     
     public function insertInfoSeat(Seat $seat, $connection)
     {
         $result = $seat->submitSeat($connection);

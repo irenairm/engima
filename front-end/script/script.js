@@ -73,10 +73,10 @@ function fetchInfo (){
 // Make JSON to send to PHP
 function makeBioskopJSON (id_schedule, id_movie, id_seat, harga) {
     return  {
-        id_schedule:id_schedule,
-        id_movie:id_movie,
-        id_seat:id_seat,
-        harga: harga
+        "id_schedule":id_schedule,
+        "id_movie":id_movie,
+        "id_seat":id_seat,
+        "harga": harga
     }
 }
 
