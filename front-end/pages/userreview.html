@@ -1,0 +1,87 @@
+<script type="module" src="../middleware/middleware.js"></script>
+<script type="module" src="../script/review.js"></script>
+
+<!DOCTYPE html>
+    <head>
+        <title>Engima</title>
+        <link rel="stylesheet" href="../css/layout.css">
+        <link rel="stylesheet" href="../css/responsive.css">
+        <link rel="stylesheet" href="../css/component.css">
+        <link href="https://fonts.googleapis.com/css?family=Raleway: 400,500,600,700,800,900&display=swap" rel="stylesheet">
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    </head>
+    <body>
+        <!-- NAVBAR -->
+        <nav class="navbar">
+            <div class="navbar-brand">
+                <a href="home.html"><span class="bold">Engi</span>ma</a>
+            </div>
+            <div class="search-section">
+                <input id="search-input" class="input search2" type ="text" placeholder="Search movie">
+                <img src="../assets/search-bar.png" class="search-bar icon-layout">
+            </div>
+            <div class="menu-list">
+                <div id="transactions" class="menu"><a href="#">Transactions</a></div>
+                <div id="logout" class="menu"><a href="#">Logout</a> </div>
+            </div>  
+        </nav>
+
+        <!-- BODY -->
+        <div class="flex-container">
+            <!-- BORDER -->
+            <div class="side-section-left"></div>
+            <!-- Main page -->
+            <div class="body-ticket">
+                <div class="container-ticket">
+                    <div class="header">
+                            <div class="click-previously">
+                                    <a href="#"><i class="fa fa-angle-left fa-3x"></i></a>
+                            </div>
+            
+                                <!-- Detail movie -->
+                            <div class="movie-header">
+                                <div class="title-review">
+                                    Avengers: Endgame
+								</div>
+                             </div>
+                    </div>  
+                    <div class="">
+                        <!-- Review-->
+						<div class="rating">
+							<span class="style-review">Add Rating</span>
+							<span>
+								<fieldset class="stars">
+										<label class = "full" for="star1"></label><input type="radio" id="star1" name="rating-star" value="1" />
+										<label class="full" for="star2"></label><input type="radio" id="star2" name="rating-star" value="2" />
+										<label class = "full" for="star3"></label><input type="radio" id="star3" name="rating-star" value="3" />
+										<label class="full" for="star4"></label><input type="radio" id="star4" name="rating-star" value="4" />
+										<label class = "full" for="star5"></label><input type="radio" id="star5" name="rating-star" value="5" />
+										<label class="full" for="star6"></label><input type="radio" id="star6" name="rating-star" value="6" />
+										<label class = "full" for="star7"></label><input type="radio" id="star7" name="rating-star" value="7" />
+										<label class="full" for="star8"></label><input type="radio" id="star8" name="rating-star" value="8" />											<label class = "full" for="star9"></label><input type="radio" id="star9" name="rating-star" value="9" />
+										<label class="full" for="star10"></label><input type="radio" id="star10" name="rating-star" value="10" />
+										</fieldset>
+							</span>
+						</div>
+						<div class="review">
+							<span class="style-review add">Add Review</span>
+							<span class="review-form">
+								<input id= "review" name = "review" class = "input-review" placeholder="Lorem ipsum"/>
+							</span>
+							<div class="button">
+								<span>
+									<button class="button-rev" id ="submit-rev">Submit</button>
+									<button class="button-rev cancel" type="button">Cancel</button>
+									
+								</span>
+							</div>
+						</div>
+                    </div>
+                </div>
+            </div>
+            <!-- BORDER -->
+            <div class="side-section-right"></div>
+        </div>
+        <script type="module" src="../script/script.js"></script>
+    </body> 
+</html>

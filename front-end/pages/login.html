@@ -1,0 +1,35 @@
+<script type="module" src="../script/search.js"></script>
+<head>
+    <title> Engima </title>
+    <link rel="stylesheet" href="../css/layout.css">
+    <link rel="stylesheet" href="../css/responsive.css">
+    <link rel="stylesheet" href="../css/component.css">
+    <link href="https://fonts.googleapis.com/css?family=Raleway:600,700&display=swap" rel="stylesheet">
+</head>
+<body>
+    <div class="wrapper center">
+        <div class="modal-auth">
+            <p id="welcome">Welcome to <strong>Engi</strong>ma!</p>
+            <!-- Email -->
+            <div class="container-form">
+                <div class="lab">
+                    <label>Email</label>
+                </div>
+                <input id= "email" type ="email" name = "email" class = "input" placeholder="joe@doe.com" required/>
+                <p id="wrong-email" class="wrong-message"></p>
+            </div>
+            <div class="container-form">
+                <div class="lab">
+                    <label>Password</label>
+                </div>
+                <input id="password" type ="password" class= "input" placeholder="place here" required/>
+                <p id="wrong-password" class="wrong-message"></p>
+            </div>
+            <button id="loginButton" class="button-auth" type ="submit">Login</button>
+            <div class="footer-form">
+                <p class="footer"> <span> Don't have an account? </span> <span class="font-blue"> <a href="register.html"> Register here </a></span></p>
+            </div>
+        </div>
+    </div>
+    <script type="module" src="../script/login.js"></script>
+</body>

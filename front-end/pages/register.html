@@ -1,0 +1,78 @@
+<script type="module" src="../script/search.js"></script>
+<head>
+    <title> Engima </title>
+    <link rel="stylesheet" href="../css/layout.css">
+    <link rel="stylesheet" href="../css/responsive.css">
+    <link rel="stylesheet" href="../css/component.css">
+    <link href="https://fonts.googleapis.com/css?family=Raleway:500,700&display=swap" rel="stylesheet">
+</head>
+
+<body>
+    <div class="wrapper center">
+        <div class="modal-auth">
+            <p id="welcome">Welcome to <strong>Engi</strong>ma!</p>
+            <!-- Username-->
+            <div class="container-form">
+                <div class="lab">
+                    <label>Username</label>
+                </div>
+                <input type ="text" id = "username" class ="input" pattern="[a-zA-Z0-9_]*" placeholder="joe.johndoe" required/> 
+                <p id="wrong-username" class="wrong-message"></p>
+            </div>
+
+            <!-- Email -->
+            <div class="container-form">
+                <div class="lab">
+                    <label>Email Address</label>
+                </div>
+                <input type ="email" id = "email" class = "input" placeholder="joe@email.com" required/>
+                <p id="wrong-email" class="wrong-message"></p>
+            </div>
+
+            <!-- Phone Number -->
+            <div class="container-form">
+                <div class="lab">
+                    <label>Phone Number</label>
+                </div>
+                <input type ="tel" id="phone" class= "input" placeholder="+62813xxxxxxxx" pattern="[\+][0-9].{8,11}"required/>  
+                <p id="wrong-no_hp" class="wrong-message"></p>
+            </div>
+
+            <!-- Password -->
+            <div class="container-form">
+                <div class="lab">
+                    <label>Password</label>
+                </div>
+                <input type ="password" id="password" class= "input" placeholder="make as strong as possible" required/>
+                <p id="wrong-password" class="wrong-message"></p>
+            </div>
+
+            <!-- Confirm Password-->
+            <div class="container-form">
+                <div class="lab">
+                    <label>Confirm Password</label>
+                </div>
+                <input type ="password" id="reconfirmPassword" class= "input" placeholder="same as above" required/>  
+                <p id="wrong-reconfirm_password" class="wrong-message"></p>
+            </div>
+            <!-- Profile Picture -->
+            <div class="container-form">
+                <div class="lab">
+                    <label>Profile Picture</label>
+                </div> 
+                <span class="input-pic">
+                    <input id="file-name" class="input input-js" type="text"required> 
+                    <input id="pic" class="input input-js file-uploader" type="file" required> 
+                    <button id= "browseButton" class="button-browse" type="submit">Browse</button>
+                </span>
+                <p id="wrong-picture_profile" class="wrong-message"></p>
+            </div>
+            <button id="registerButton" class="button-auth" type ="submit">Register</button>
+            <div class="footer-form">
+                <p class="footer"> <span> Already have an account? </span> <span class="font-blue"> <a
+                            href="login.html">Login here</a></span></p>
+            </div>
+        </div>
+    </div>
+    <script type="module" src="../script/register.js"></script>
+</body>

@@ -1,0 +1,20 @@
+/* Style for login page */
+.wrapper {
+    display: flex;
+    height: 100vh;
+    min-height: 500px;
+}
+
+.center {
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+}
+
+p {
+    font-family: 'Raleway';
+}
+
+body{
+	margin: 0;
+}

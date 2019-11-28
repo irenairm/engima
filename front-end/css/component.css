@@ -1,0 +1,1118 @@
+/* This is styling for component such as buttons, modals, etc */
+.modal-auth {
+    width: 365px;
+    padding: 30px;
+    border-radius: 10px;
+    background: white;
+    box-shadow: 1px -1px 3px 0px #00000033,
+        -1px 2px 3px 0px rgba(0, 0, 0, 0.2);
+    font-family: 'Raleway';
+}
+
+#welcome {
+    margin: 2rem 1rem;
+    /* font-family: 'Lato'; */
+}
+
+.container-form {
+    font-size: 14px;
+    padding-top: 0px;
+    margin-top: 0.2rem;
+    margin-bottom: 1rem;
+}
+
+.footer-form {
+    font-size: 0.85rem;
+}
+
+.input {
+    width: 100%;
+    margin-top: 0.5rem;
+    margin-bottom: 0.2rem;
+    padding: 0.7rem 1rem;
+    border: 1px solid #ccc;
+    border-radius: 0.3rem;
+}
+
+.lab {
+    text-align: left;
+    color: rgb(99, 99, 99);
+    font-weight: normal;
+    font-size: 12px;
+    margin-bottom: 0.3rem;
+}
+
+a:-webkit-any-link {
+    color: rgb(0, 192, 236);
+    text-decoration: none;
+    font-style: black;
+}
+
+.button-auth {
+    width: 100%;
+    padding: 0.9rem 0.9rem;
+    margin-top: 0.5rem;
+    margin-bottom: 0.5rem;
+    border-radius: 5px;
+    border-color: rgb(0, 192, 236);
+    font-family: 'Raleway';
+    font-size: 13px;
+    background: rgb(0, 192, 236);
+    color: white;
+    cursor: pointer;
+}
+
+.button-browse {
+    width: 49%;
+    padding: 0.6rem 0.6rem;
+    margin-top: 0.2rem;
+    margin-bottom: 0.2rem;
+    border-radius: 5px;
+    border-color: rgb(181, 181, 181);
+    background: rgb(181, 181, 181);
+    color: white;
+}
+
+.input-js {
+    width: 49%;
+}
+
+.file-uploader {
+    display: none;
+}
+
+.wrong-message {
+    color: rgb(228, 1, 2);
+    margin-bottom: 0.1rem;
+    margin-top: 0rem;
+    /* font-family: Lato; */
+    font-weight: 600;
+    text-align: left;
+    font-size: 12px;
+}
+
+.input.wrong {
+    margin-bottom: 0.2rem;
+}
+
+::placeholder {
+    color: rgb(173, 173, 173);
+    font-family: 'Raleway';
+}
+
+/* home.html */
+.main-wrapper {
+    font-family: 'Raleway', sans-serif;
+    display: flex;
+    min-height: 100vh;
+}
+
+.side-section-left {
+    background: rgb(38, 38, 38);
+    width: 12.5vw;
+    margin-left: -15px;
+    /* margin-top: -15px; */
+    margin-bottom: -15px;
+}
+
+.side-section-right {
+    background: rgb(38, 38, 38);
+    width: 12.5vw;
+    margin-right: -15px;
+    /* margin-top: -15px; */
+    margin-bottom: -15px;
+}
+
+
+.main-section {
+    width: 75vw;
+    padding-left: 10vw;
+    display: block;
+}
+
+.section-welcome #username {
+    color: rgb(0, 192, 236);
+}
+
+.tagline {
+    margin-top: 2.25rem;
+}
+
+.section-movies {
+    margin-top: 0.35rem;
+    display: flex;
+    flex-wrap: wrap;
+}
+
+.section-welcome {
+    height: 100px;
+}
+
+.section-welcome h3 {
+    font-size: 2rem;
+    font-weight: 800;
+    margin-bottom: -0.25rem;
+    margin-top: 50px;
+}
+
+.section-welcome h4 {
+    font-size: 1.25rem;
+    font-weight: 600;
+}
+
+.line-break {
+    width: 100%;
+}
+
+.home-page-movie {
+    max-width: 140px;
+    height: 100%;
+    display: block;
+    margin-right: 2rem;
+    padding-right: 0.5rem;
+    padding-top: 0.75rem;
+}
+
+.home-page-movie .review {
+    margin-top: -0.5rem;
+    display: flex;
+}
+
+.review p {
+    margin-left: 0.5rem;
+    margin-top: 0.125rem;
+    color: rgb(181, 181, 181);
+}
+
+.home-page-movie p {
+    font-weight: 700;
+    font-size: 0.85rem;
+}
+
+.movie-title {
+    color: black;
+}
+
+.home-page-movie .movie-design {
+    height: 219.24px;
+    width: 151px;
+    border-radius: 10px;
+}
+
+.search-bar {
+    height: 1rem;
+    width: 1rem;
+    position: relative;
+    top: 3px;
+}
+
+.star-icon {
+    height: 1.25rem;
+    width: 1.25rem;
+    vertical-align: top;
+    display: inline-block;
+}
+
+.rev {
+    height: 0.7rem;
+    width: 0.7rem;
+    margin-left: 0px;
+    vertical-align: top;
+    display: inline-block;
+    padding-top: 0.1rem;
+}
+
+.icon-layout {
+    margin-left: -10%;
+}
+
+/* B I O S K O P */
+body {
+    margin: 0;
+    padding: 0;
+    font-family: 'Raleway';
+}
+
+.navbar {
+    height: 60px;
+    box-shadow: 1px -1px 3px 0px #00000033,
+        -1px 2px 3px 0px rgba(0, 0, 0, 0.2);
+    display: flex;
+    min-width: 600px;
+}
+
+.navbar a {
+    color: rgb(1, 1, 1);
+    font-weight: 500;
+}
+
+.navbar-brand {
+    margin-top: 20px;
+    margin-left: 17.25%;
+    font-size: 18px;
+}
+
+/* Transaction, Logout */
+.menu a {
+    color: rgb(1, 1, 1);
+    font-weight: 500;
+}
+
+.bold {
+    color: rgb(0, 192, 236);
+    font-weight: bold;
+}
+
+.fa-search {
+    position: absolute;
+    top: 1.3rem;
+    right: 44.5rem;
+    color: rgb(162, 162, 162);
+}
+
+.search {
+    width: 25vw;
+    height: 33px;
+    margin-top: 13.5px;
+    font-weight: 500;
+}
+
+.search-section {
+    margin-left: 6.5%;
+    min-width: 200px;
+}
+
+.search::placeholder {
+    color: rgb(123, 123, 123);
+}
+
+.menu-list {
+    display: flex;
+    margin-left: 17vw;
+}
+
+@media only screen and (max-width: 800px) {
+    .menu-list {
+        margin-left: 0;
+    }
+
+    .menu-list #logout {
+        margin-left: 0;
+    }
+
+    .icon-layout {
+        margin-left: -14.5%;
+    }
+
+}
+
+.menu-list #logout {
+    margin-left: 50%;
+}
+
+.menu {
+    margin-top: 22.5px;
+    font-size: 12px;
+    font-style: black;
+}
+
+.flex-container {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    width: 100%;
+    height: 100%;
+}
+
+.border-black {
+    background: rgb(38, 38, 38);
+    width: 7%;
+
+}
+
+.body-ticket {
+    width: 86%;
+
+}
+
+.container-ticket {
+    padding-top: 5rem;
+    padding-bottom: 10rem;
+    padding-left: 4rem;
+    padding-right: 3.5rem;
+
+}
+
+.header {
+    position: relative;
+}
+
+.click-previously {
+    vertical-align: top;
+    display: inline-block;
+}
+
+.movie-header {
+    padding-left: 1rem;
+    margin-top: 0rem;
+    vertical-align: top;
+    display: inline-block;
+    width: 60%;
+    letter-spacing: 1px;
+    text-align: justify;
+}
+
+.title {
+    padding-top: 0.5rem;
+    padding-bottom: 0.75rem;
+    font-size: 18px;
+    font-weight: bold;
+}
+
+.showtime {
+    font-size: 16px;
+    font-weight: 500;
+}
+
+hr {
+    margin-top: 2rem;
+    margin-bottom: 2rem;
+    border-top: 1px solid #f8f8f8;
+    border-bottom: 1px solid rgba(0, 0, 0, 0.2);
+    width: 100%;
+}
+
+.flex-container-book {
+    display: flex;
+    flex-direction: row;
+    width: 100%;
+    height: 100%;
+}
+
+.seat-selection {
+    width: 60%;
+    border-right: 1px solid #ccc;
+}
+
+.of-schedule {
+    border-right-style: hidden;
+    width: 50%;
+}
+
+.seat-row {
+    width: 95%;
+
+}
+
+.seat {
+    float: left;
+    border: 1.4px solid rgb(0, 192, 236);
+    border-radius: 0.2rem;
+    color: rgb(0, 192, 236);
+    background: white;
+
+    height: 1.9rem;
+    width: 1.9rem;
+    margin: .4rem .4rem;
+
+    font-size: 14px;
+    font-family: 'Raleway';
+    font-weight: 600;
+    text-align: center;
+
+    cursor: pointer;
+}
+
+:disabled {
+    background-color: rgb(241, 239, 240);
+    border-color: rgb(178, 178, 178);
+    color: rgb(179, 177, 178);
+    pointer-events: none;
+    cursor: not-allowed;
+}
+
+.seat:hover {
+    background-color: rgb(2, 190, 238);
+    color: white;
+}
+
+.seat:active {
+    background-color: rgb(2, 190, 238);
+    color: white;
+}
+
+#booking-message {
+    width: 50%;
+    float: right;
+    padding-left: 2rem;
+    justify-content: right;
+    letter-spacing: 0.2px;
+
+}
+
+.text {
+    margin-top: 0;
+    padding-top: .2rem;
+    font-weight: 630;
+    color: rgb(90, 90, 90);
+}
+
+#book-msg {
+    font-size: 12px;
+    font-weight: 530;
+    color: rgb(180, 180, 180);
+}
+
+#booked {
+    display: none;
+}
+
+.screen-img {
+
+    width: 93%;
+
+    margin-top: 1.6rem;
+    margin-left: 0.4rem;
+    padding: 0.3rem 0rem;
+    border-radius: 0.2rem;
+    text-align: center;
+    font-weight: 600;
+    font-size: 13px;
+    letter-spacing: 0.5px;
+    color: white;
+    background-color: rgb(162, 162, 162);
+}
+
+#movie-selected-title {
+    padding-bottom: 0.1rem;
+    padding-top: 0.2rem;
+    margin-bottom: 0rem;
+    font-weight: bold;
+    font-size: 16px;
+    color: black;
+}
+
+#movie-selected-time {
+    padding-top: 0rem;
+    margin-top: 0;
+    margin-bottom: 1rem;
+    font-size: 14px;
+
+}
+
+.price-detail {
+    display: inline;
+
+}
+
+#movie-selected-seat {
+    width: 50%;
+    margin: 0;
+    float: left;
+    font-weight: 500;
+    font-size: 14px;
+}
+
+#movie-selected-price {
+    width: 50%;
+    margin: 0;
+    float: right;
+    text-align: right;
+    font-weight: 500;
+    font-size: 14px;
+}
+
+#button-buy {
+    width: 23%;
+    padding: 0.5rem 0.7rem;
+    float: right;
+    margin-top: 1.4rem;
+    margin-bottom: 0rem;
+    border-radius: 5px;
+    border-color: rgb(0, 192, 236);
+    background: rgb(0, 192, 236);
+    font-family: 'Raleway';
+    font-size: 13px;
+    color: white;
+    cursor: pointer;
+}
+
+#modal {
+    display: none;
+    position: fixed;
+    z-index: 1;
+    left: 0;
+    top: 3.45rem;
+    width: 100%;
+    height: 100vh;
+    overflow-y: hidden;
+    background-color: rgba(0, 0, 0, 0.6);
+}
+
+
+.modal-content {
+    background-color: #fefefe;
+    margin: 13% auto;
+    padding-left: 1.5rem;
+    padding-right: 1.5rem;
+    border: 1px solid #888;
+    border-radius: 0.6rem;
+    width: 24.5%;
+    height: 37%;
+}
+
+.modal-text {
+    padding-top: 2rem;
+    padding-bottom: 0rem;
+    margin-bottom: 0rem;
+}
+
+.message-pay {
+    text-align: center;
+    font-weight: 500;
+    margin-bottom: 0;
+    color: rgb(9, 121, 152);
+}
+
+.message-directing {
+    padding-top: 0.9rem;
+    padding-bottom: 1rem;
+    color: rgb(0, 0, 0);
+    margin-right: 0.5rem;
+    margin-left: 0.5rem;
+    text-align: center;
+    font-size: 12px;
+    font-weight: 600;
+    letter-spacing: 0.1rem;
+}
+
+.mod {
+    width: 79%;
+    text-align: center;
+    vertical-align: middle;
+    font-size: 14px;
+    font-weight: 600px;
+    padding-left: 0.2rem;
+    padding-right: 0.2rem;
+    margin-left: 2rem;
+}
+
+.movie-design {
+    height: 240.24px;
+    width: 200px;
+    border-radius: 8px;
+}
+
+.movie-detail {
+    font-size: 25px;
+}
+
+.detail-genre {
+    font-size: 13px;
+    font-weight: 550;
+    padding-bottom: 0.5rem;
+    color: rgb(9, 121, 152);
+}
+
+.detail-released-time {
+    font-size: 13px;
+    font-weight: 550;
+    padding-bottom: 0.5rem;
+}
+
+.detail-summary {
+    font-size: 11px;
+    font-weight: 300;
+}
+
+.spacing {
+    line-height: 18px;
+    margin-top: 0.5rem;
+}
+
+.spacing-review {
+    line-height: 18px;
+    margin-top: 0rem;
+}
+
+.review {
+    position: relative;
+    padding-bottom: 0.5rem;
+}
+
+.rating {
+    margin: 0px 0px;
+    vertical-align: top;
+    display: inline-block;
+}
+
+.rate {
+    padding: 0;
+    margin-left: 1px;
+    font-weight: 510;
+    color: rgb(90, 90, 90);
+    vertical-align: top;
+    display: inline-block;
+}
+
+.smaller {
+    font-size: 11px;
+}
+
+.per-rate {
+    font-size: 10px;
+    font-weight: 600;
+    vertical-align: sub;
+}
+
+.container-details {
+    padding-left: 0;
+    padding-top: 2.5rem;
+}
+
+.schedule {
+    margin-top: 0.2rem;
+    padding-left: 1rem;
+    padding-right: 1rem;
+    width: 90%;
+}
+
+.title-schedule {
+    font-weight: 600;
+    letter-spacing: 0.05rem;
+    margin-top: 0rem;
+    margin-bottom: 0rem;
+}
+
+table {
+    border-collapse: collapse;
+    font-size: 10px;
+    width: 99%;
+}
+
+tr {
+    padding: 0.1rem;
+}
+
+.list-schedule:hover {
+    background-color: rgb(181, 181, 181);
+}
+
+.last {
+    border-bottom-style: hidden;
+}
+
+th,
+td {
+    padding-left: 0px;
+    padding-top: 10px;
+    padding-bottom: 10px;
+    padding-right: 20px;
+    border-bottom: 1px solid rgb(200, 200, 200);
+    text-align: left;
+    font-weight: 600;
+    color: rgb(123, 123, 123);
+}
+
+th .red {
+    color: red;
+}
+
+.seats-availability {
+    color: black;
+}
+
+.link-book {
+    text-align: right;
+    padding-right: 0.3rem;
+    margin-right: 0;
+}
+
+.symbol-book {
+    text-align: right;
+    padding-right: 0;
+    margin-right: 0;
+}
+
+.review-user {
+    margin-top: 0.2rem;
+    margin-left: 1rem;
+    padding-left: 1rem;
+    padding-right: 1rem;
+}
+
+.fa-times-circle {
+    color: red;
+}
+
+.fa-chevron-circle-right {
+    color: rgb(0, 192, 236);
+}
+
+.profile-pic {
+    width: 1%;
+    padding-top: 0rem;
+    padding-bottom: 2.5rem;
+}
+
+.profile-pic-child {
+    width: 45px;
+    height: 45px;
+    border-radius: 50px;
+}
+
+.star {
+    padding-bottom: 0.3rem;
+    padding-top: 0.3rem;
+    position: relative;
+}
+
+.review-message {
+    width: 80%;
+    padding-top: 1rem;
+    padding-bottom: 0;
+}
+
+.detail {
+    height: 50%;
+}
+
+/* Search */
+.section-title {
+    height: 100px;
+}
+
+.section-title h3 {
+    font-size: 1.2rem;
+    font-weight: 700;
+    margin-bottom: -0.3rem;
+    margin-top: 75px;
+}
+
+.section-title .tagline {
+    margin-top: 1.25rem;
+    font-weight: 300;
+    font-size: 0.95rem;
+    color: gray;
+}
+
+.section-search {
+    margin-top: 0.35rem;
+    display: block;
+    flex-wrap: wrap;
+}
+
+.search-card {
+    /*max-width: 140px;
+    height: 100%;*/
+    margin-bottom: 2.5rem;
+    padding-bottom: 1.5rem;
+    display: flex;
+    border-bottom: 1px solid gray;
+    max-width: 90%;
+    /*    margin-right: 1.75rem;
+    padding-top: 0.75rem;*/
+}
+
+.image-section .movie-design {
+    height: 182.7px;
+    width: 124.2917px;
+    border-radius: 10px;
+}
+
+.desc-section {
+    display: block;
+    margin-left: 1.75rem;
+    max-width: 60%;
+}
+
+.desc-section h3 {
+    font-weight: 800;
+
+}
+
+.desc-section .review {
+    margin-top: -0.57rem;
+    display: flex;
+}
+
+.review-score {
+    font-weight: 700;
+}
+
+.synopsis {
+    font-size: 0.8rem;
+    margin-top: -0.75rem;
+    line-height: 1.25rem;
+    /*max-width: 80%;*/
+}
+
+.view-detail {
+    margin-top: 20%;
+    margin-left: 5.25%;
+    display: flex;
+    cursor: pointer;
+}
+
+.view-detail p {
+    color: rgb(0, 192, 236);
+    font-weight: 700;
+    font-size: 15;
+}
+
+.icon-detail {
+    margin-top: 10.5%;
+    margin-left: 10px;
+    color: rgb(0, 192, 236);
+}
+
+.section-pagination {
+    justify-content: center;
+    display: flex;
+    margin-right: 10%;
+}
+
+.section-pagination p {
+    font-size: 0.85rem;
+    font-weight: 600;
+    color: rgb(0, 192, 236);
+    margin-left: 1%;
+    margin-right: 1%;
+}
+
+.section-pagination .seat {
+    margin-right: 1%;
+}
+
+#next,
+#back {
+    cursor: pointer;
+}
+
+#buttons {
+    display: flex;
+}
+
+/* Special case search bioskop no ticket selected and movie detail */
+.search2 {
+    width: 25vw;
+    margin-top: 13.5px;
+    font-weight: 500;
+}
+
+/*.link-book {
+    cursor: pointer;
+}
+*/
+/*TRANSACTION*/
+.transaction-container {
+    background-color: white;
+    margin-top: 0.1rem;
+    padding-top: 4rem;
+    padding-bottom: 0rem;
+    padding-left: 2rem;
+    padding-right: 3.5rem;
+
+}
+
+.transaction-header {
+    padding-top: 0.5rem;
+    padding-bottom: 0.4rem;
+    font-size: 20px;
+    font-weight: bold;
+}
+
+.movie-transaction {
+    background-color: white;
+    padding-top: 0rem;
+}
+
+.movie-poster {
+    background-color: cyans;
+    /* padding-right: 1.5rem; */
+    height: 12rem;
+    /* width: 5rem; */
+    border-radius: 0.5rem;
+    float: left;
+
+}
+
+.judul {
+    /* background-color: white; */
+    margin-left: 10rem;
+    padding-top: 2rem;
+    padding-bottom: 2rem;
+    margin-top: 2rem;
+    font-size: 20px;
+    font-weight: bold;
+}
+
+.schedule {
+    background-color: white;
+    margin-left: 1.5rem;
+    padding-right: 1.5rem;
+    padding-bottom: 1rem;
+    padding-left: 0.5rem;
+    font-size: 14px;
+    font-weight: bold;
+    color: rgb(0, 192, 236);
+
+}
+
+.datetime {
+    background-color: white;
+    padding-bottom: 1rem;
+    margin-left:2rem;
+    /* padding-right: 23.2rem; */
+    font-size: 14px;
+    font-weight: bold;
+    color: black;
+}
+
+.button-transaction {
+    background-color: white;
+    margin-top: 0.8rem;
+    padding-top: 3rem;
+    padding-left: 37rem;
+
+}
+
+.edit-button {
+    font-size: 12px;
+    border-radius: 4px;
+    border: 1px solid #2fc815;
+    color: white;
+    background-color: #2fc815;
+    padding: 0.3rem 1rem;
+}
+
+.delete-button {
+    font-size: 12px;
+    border-radius: 4px;
+    border: 1px solid #F90D0F;
+    color: white;
+    background-color: #F90D0F;
+    padding: 0.3rem 1rem;
+    margin-right: 0.3rem;
+}
+
+#status_trans{
+    background-color: white;
+    padding-bottom: 1rem;
+    margin-left: 3.2rem;
+    /* padding-right: 23.2rem; */
+    font-size: 14px;
+    font-weight: bold;
+    color: black;
+}
+
+#id_transaction{
+    background-color: white;
+    padding-bottom: 1rem;
+    margin-left: 1rem;
+    /* padding-right: 23.2rem; */
+    font-size: 14px;
+    font-weight: bold;
+    color: black;
+}
+
+.title-review{
+    padding-top: 0.9rem;
+    padding-bottom: 0.75rem;
+    font-size: 18px;
+    font-weight: bold;
+}
+
+.style-review{
+    font-family: Raleway;
+    font-weight: bold;
+    padding-left: 0rem;
+    padding-right: 2rem;
+}
+
+.rating-container{
+    margin-top: 4rem;
+    margin-left: 5rem;
+    padding-left: 5rem;
+}
+
+.review-container{
+    margin-top: 2rem;
+    margin-left: 5rem;
+    padding-left: 5rem;
+}
+
+.input-review{
+    width: 65%;
+    height:20%;
+    margin-top: 0rem;
+    margin-bottom: 0.2rem;
+    padding: 0.7rem 1rem;
+    border: 1px solid #ccc;
+    border-radius: 0.3rem;
+}
+
+.add{
+    padding-right: 1.7rem;
+    padding-top: 2rem;
+    vertical-align: top;
+}
+.button{
+    margin-right:4.5rem;
+    padding-right: 4rem;
+}
+.button-rev{
+    width: 15%;
+    padding: 0.5rem 0.9rem;
+    margin-top: 2rem;
+    margin-bottom: 0.5rem;
+    margin-left: 1rem;
+    border-radius: 5px;
+    border-color: rgb(0, 192, 236);
+    font-family: 'Raleway';
+    font-size: 13px;
+    background: rgb(0, 192, 236);
+    color: white;
+    cursor: pointer;
+    float: right;
+}
+
+.cancel {
+    background-color: rgb(255,255,255);
+    border-color: rgb(178, 178, 178);
+    color: rgb(179, 177, 178);
+}
+
+/* RATING STARS */
+@import url(//netdna.bootstrapcdn.com/font-awesome/3.2.1/css/font-awesome.css);
+
+fieldset, label { margin: 0; padding: 0; }
+
+.stars { 
+  border: none;
+  float:right;
+}
+
+.stars > input { display: none; } 
+.stars > label:before { 
+  margin: 5px;
+  font-size: 1.25em;
+  font-family: FontAwesome;
+  display: inline-block;
+  content: "\f005";
+}
+
+.stars > label { 
+  color: #ddd; 
+  float: right; 
+}
+
+
+.stars > input:checked ~ label, /* show gold star when clicked */
+.stars:not(:checked) > label:hover, /* hover current star */
+.stars:not(:checked) > label:hover ~ label { color:orange;  } /* hover previous stars in list */
+
+.stars > input:checked + label:hover, /* hover current star when changing rating */
+.stars > input:checked ~ label:hover,
+.stars > label:hover ~ input:checked ~ label, /* lighten current selection */
+.stars > input:checked ~ label:hover ~ label { color:orange;  } 

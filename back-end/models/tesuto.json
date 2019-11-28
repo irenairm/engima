@@ -1,0 +1,25 @@
+{
+    "status": 200,
+    "values": [
+        {
+            "id_pengguna": 1,
+            "nomor_akun_virtual": "67068566614815817",
+            "id_film": 1,
+            "jadwal_film": "2019-06-24T00:00:00.000Z",
+            "kursi_pesanan": "O2",
+            "waktu_transaksi": "2019-10-12T00:00:00.000Z",
+            "status_transaksi": null,
+            "id_transaksi": 1
+        },
+        {
+            "id_pengguna": 1,
+            "nomor_akun_virtual": null,
+            "id_film": 640882,
+            "jadwal_film": null,
+            "kursi_pesanan": null,
+            "waktu_transaksi": "2019-11-24T00:00:00.000Z",
+            "status_transaksi": "PENDING",
+            "id_transaksi": 26
+        }
+    ]
+} 

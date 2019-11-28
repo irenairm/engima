@@ -1,0 +1,139 @@
+<script type="module" src="../middleware/middleware.js"></script>
+<script type="module" src="../script/bioskop.js"></script>
+<script type="module" src="../script/script.js"></script>
+
+<!DOCTYPE html>
+    <head>
+        <title>Engima</title>
+        <link rel="stylesheet" href="../css/layout.css">
+        <link rel="stylesheet" href="../css/responsive.css">
+        <link rel="stylesheet" href="../css/component.css">
+        <link href="https://fonts.googleapis.com/css?family=Raleway: 400,500,600,700,800,900&display=swap" rel="stylesheet">
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    </head>
+    <body>
+        <!-- NAVBAR -->
+        <nav class="navbar">
+            <div class="navbar-brand">
+                <a href="home.html"><span class="bold">Engi</span>ma</a>
+            </div>
+            <div class="search-section">
+                <input id="search-input" class="input search2" type ="text" placeholder="Search movie">
+                <img src="../assets/search-bar.png" class="search-bar icon-layout">
+            </div>
+            <div class="menu-list">
+                <div id="transactions" class="menu"><a href="#">Transactions</a></div>
+                <div id="logout" class="menu"><a href="#">Logout</a> </div>
+            </div>  
+        </nav>
+
+        <!-- BODY -->
+        <div class="flex-container">
+            <!-- BORDER -->
+            <div class="side-section-left"></div>
+            <!-- Main page -->
+            <div class="body-ticket">
+                <div class="container-ticket">
+                    <div class="header">
+                            <div class="click-previously">
+                                <a href="#"><i class="fa fa-angle-left fa-3x"></i></a>
+                            </div>
+
+                            <div class="movie-header">
+                                <div class="title"></div>
+                                <div class="showtime"></div>
+                               
+                            </div>
+                    </div>
+                    <hr> <!-- Border -->    
+                    <!-- Book ticket -->
+                    <div class="flex-container-book">
+                        <!-- Seat selection -->
+                        <div class="seat-selection">
+
+                            <!-- ROW 1 -->
+                          <!--   <div class="seat-row">
+                                <button class="seat" value = "1" id = "1" type="submit"disabled>1</button>
+                                <button class="seat" value = "2" id = "2" type="submit"  ">2</button>
+                                <button class="seat" value = "3" id = "3" type="submit" " >3</button>
+                                <button class="seat" value = "4" id = "4" type="submit" " disabled>4</button>
+                                <button class="seat" value = "5" id = "5" type="submit" " disabled>5</button>
+                                <button class="seat" value = "6" id = "6" type="submit " >6</button>
+                                <button class="seat" value = "7" id = "7" type="submit " >7</button>
+                                <button class="seat" value = "8" id = "8" type="submit " >8</button>
+                                <button class="seat" value = "9" id = "9" type="submit " >9</button>
+                                <button class="seat" value = "10" id = "10" type="submit" " disabled>10</button>
+                            </div> -->    
+                            <!-- ROW 2 -->
+
+                          <!--   <div class="seat-row">
+                                <button class="seat" value = "11" id="11" type="submit" ">11</button>
+                                <button class="seat" value = "12" id="12" type="submit"">12</button>
+                                <button class="seat" value = "13" id="13" type="submit" disabled">13</button>
+                                <button class="seat" value = "14" id="14" type="submit" disabled">14</button>
+                                <button class="seat" value = "15" id="15" type="submit" disabled">15</button>
+                                <button class="seat" value = "16" id="16" type="submit" disabled">16</button>
+                                <button class="seat" value = "17" id="17" type="submit"">17</button>
+                                <button class="seat" value = "18" id="18" type="submit"">18</button>
+                                <button class="seat" value = "19" id="19" type="submit"">19</button>
+                                <button class="seat" value = "20" id="20" type="submit"">20</button>
+                            </div>    -->
+
+                            <!-- ROW 3 -->
+                          <!--   <div class="seat-row">
+                                <button class="seat" value = "21" id="21" type="submit"">21</button>
+                                <button class="seat" value = "22" id="22" type="submit"">22</button>
+                                <button class="seat" value = "23" id="23" type="submit"">23</button>
+                                <button class="seat" value = "24" id="24" type="submit"">24</button>
+                                <button class="seat" value = "25" id="25" type="submit"">25</button>
+                                <button class="seat" value = "26" id="26" type="submit"">26</button>
+                                <button class="seat" value = "27" id="27" type="submit"">27</button>
+                                <button class="seat" value = "28" id="28" type="submit"">28</button>
+                                <button class="seat" value = "29" id="29" type="submit"">29</button>
+                                <button class="seat" value = "30" id="30" type="submit" disabled">30</button>
+                            </div>     
+                            <div class="seat-row"> -->
+                                    <!-- Screen -->
+                             <!--     <button class="screen-img" type="button" disabled>Screen</button>
+                            </div>     -->               
+                     
+
+                        </div>
+
+                        <!-- Booking message -->
+                        <div id="booking-message">
+                          <!--   <h3 class="text">Booking Summary</h3>
+                            <p id="book-msg">You haven't selected any seat yet. Please click on one of the seat provided.</p>
+                            <div id ="booked">
+                                <div class="movie-detail">
+                                    <p id="movie-selected-title">Avengers: Endgame</p>
+                                    <p id="movie-selected-time">September 4, 2019 - 09.40 PM</p>
+                                </div>
+                                <span class="price-detail">
+                                    <p id="movie-selected-seat"></p>
+                                    <p id="movie-selected-price">Rp 45.000</p>
+                                </span>
+                                <button id="button-buy" type="submit">Buy Ticket</button>
+                            </div> -->
+                        </div> 
+                        <div id="modal">
+                          <!--   <div class="modal-content">
+                                <div class="modal-text">
+                                    <h2 class="message-pay">Payment Success!</h2>
+                                    <p class="message-directing" id="id_transaksi"></p>
+                                    <p class="message-directing" id="no_va"></p>
+                                    <button class="button-buy mod" id="modal-button" type="submit">Go to transaction history</button>
+                                </div>                           
+                            </div> -->
+                        </div>                               
+                    </div>
+                </div>
+            </div>
+            <!-- BORDER -->
+            <div class="side-section-right"></div>
+        </div>
+        <script type="module" src="../script/script.js"></script>
+        <script type="module" src="../script/transaction.js"></script>
+
+    </body> 
+</html>
