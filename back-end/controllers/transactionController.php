@@ -98,8 +98,8 @@ class TransactionController
     {
         $html .= '<div class="transaction-header">
                     Transaction History
-                </div>
-                <br>';
+                </div>'
+               ;
         foreach ($transaction_arr as $movie) {      
         $transgetFilm = $transaction->getFilmTitle($transaction_arr['values']['id_film']);
         $transgetPoster = $transaction->getFilmPoster($transaction_arr['values']['id_film']);  

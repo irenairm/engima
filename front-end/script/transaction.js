@@ -31,10 +31,10 @@ function getAllMovies(access_token) {
 // This function utilizes AJAX to send to backend server.
 function handleResponse(response) {
     if (response.status_code === '200') {
-        document.querySelector('.transaction-container').innerHTML = response.message;
+        document.querySelector('.container-ticket').innerHTML = response.message;
     } else {
         // Returns HTML
-        window.location.href = FRONT_END_BASE_URL + 'pages/transaction.html';
+        window.location.href = FRONT_END_BASE_URL + 'pages/pelarian.html';
     }
 }
 
