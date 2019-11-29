@@ -77,7 +77,7 @@ class TransactionController
             if ($this->validateAccessToken($user, $connection, $access_token)) {
                 $this->fetchUsername($user, $connection, $access_token);
                 $this->fetchID($user,$connection,$access_token);
-                $id_user = 1;
+                // $id_user = 1;
                 $this->getTransactionFromUser($connection,$id_user); //, $id_movie, $id_seat
             }
         }

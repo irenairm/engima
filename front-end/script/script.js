@@ -27,30 +27,30 @@ window.onclick = e => {
     }
 }
 
-// document.getElementById("button-buy").onclick = function() {
-//     window.location.href = FRONT_END_BASE_URL + 'pages/transaction.html';
-// }
+document.getElementById("button-buy").onclick = function() {
+    window.location.href = FRONT_END_BASE_URL + 'pages/transaction.html';
+}
 
-// button.onclick = function(){
-// //    modal.style.display= "block"; //show block
-//     alert('a');
-    // document.getElementById("modal").style.display = "block";
-    // document.getElementById("modal-content").style.display = "block";
-    // document.getElementById("modal-text").style.display = "block";
+button.onclick = function(){
+//    modal.style.display= "block"; //show block
+    alert('a');
+    document.getElementById("modal").style.display = "block";
+    document.getElementById("modal-content").style.display = "block";
+    document.getElementById("modal-text").style.display = "block";
 
-    //document.getElementById(e.target.id).disabled = true;
-    // console.log('tesuto');
-// }
+    document.getElementById(e.target.id).disabled = true;
+    console.log('tesuto');
+}
 
 // Show movie details when clicked on seat
-// var i;
+var i;
 
-// for (i=0; i<seat.length; i++){
-//     seat[i].addEventListener('click', function() {
-//         not_booked[1].style.display = "none";
-//         not_booked[2].style.display = "block";
-//     })
-// }
+for (i=0; i<seat.length; i++){
+    seat[i].addEventListener('click', function() {
+        not_booked[1].style.display = "none";
+        not_booked[2].style.display = "block";
+    })
+}
 
 go_transaction.onclick = function(){
     startSendingInfo();
