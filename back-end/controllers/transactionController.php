@@ -76,8 +76,7 @@ class TransactionController
             // $id_pengguna = 1;
             if ($this->validateAccessToken($user, $connection, $access_token)) {
                 $this->fetchUsername($user, $connection, $access_token);
-                $this->fetchID($user,$connection,$access_token);
-                // $id_user = 1;
+                $id_user = $this->fetchID($user,$connection,$access_token);
                 $this->getTransactionFromUser($connection,$id_user); //, $id_movie, $id_seat
             }
         }
@@ -86,8 +85,9 @@ class TransactionController
     public function getTransactionFromUser($connection,$id_user)
     {
         $transaction = new Transaction($connection);
+        print_r($id_user);
         $transaction_arr = $transaction->getTransactionByUser($connection,$id_user);
-        
+        // print_r($transaction_arr['values']);
         if ($transaction_arr != '500')
         {
             $this->render($transaction, $transaction_arr);
@@ -100,9 +100,11 @@ class TransactionController
                     Transaction History
                 </div>'
                ;
-        foreach ($transaction_arr as $movie) {      
-        $transgetFilm = $transaction->getFilmTitle($transaction_arr['values']['id_film']);
-        $transgetPoster = $transaction->getFilmPoster($transaction_arr['values']['id_film']);  
+        // foreach ($transaction_arr as $movie) { 
+        // $transaction_arr = json_encode($transaction_arr); 
+        for ($i = 0; $i<=sizeof($transaction_arr['values'])-1; $i++){
+        $transgetFilm = $transaction->getFilmTitle($transaction_arr['values'][$i]['id_film']);
+        $transgetPoster = $transaction->getFilmPoster($transaction_arr['values'][$i]['id_film']);  
         $html .= '<img src="https://image.tmdb.org/t/p/w185/' . $transgetPoster .'" class="movie-poster">
                     <div class="judul">'. $transgetFilm .'</div>
                     <div class="schedule">
@@ -117,12 +119,12 @@ class TransactionController
                         <div class="trans-detail">
                             <span class="schedule">ID Transaksi</span>
                             <span id="id_transaction">'
-                              .$movie['values']['id_transaksi']. '</span>
+                              .$movie['values'][$i]['id_transaksi']. '</span>
                         </div>';
         $html  .=      ' <div class="trans-detail">
                             <span class="schedule">Status</span>
                             <span id="status_trans">'
-                       .$movie['values']['status_transaksi']. ' </span>';
+                       .$movie['values'][$i]['status_transaksi']. ' </span>';
         $html .=                 
                        '</div>
                     </div>
