@@ -114,7 +114,8 @@ class Transaction
         // }
 
         // Submit transaksi via WS
-        $url = "http://3.90.144.191:9000/users/".$id_pengguna.""; 
+        // http://3.90.144.191:9000/users/
+        $url = "http://localhost:9000/users/".$id_pengguna.""; 
         $data = array(
             'id_pengguna'=>$id_pengguna,
             'no_akun_virtual'=> $this->getVirtualAccount(),// virtual akun,
@@ -147,7 +148,7 @@ class Transaction
 
     public function getTransactionByUser($database,$id_pengguna) //, $id_pengguna
     {
-        $api = file_get_contents("http://3.90.144.191:9000/users/$id_pengguna"); //". $id_pengguna."
+        $api = file_get_contents("http://localhost:9000/users/$id_pengguna"); //". $id_pengguna."
         $results = json_decode($api, true); 
        
         if ($results) {
@@ -175,7 +176,7 @@ class Transaction
         return $movie['poster_path'];
     }
     public function changeTransactionStatus($id_transaksi, $status){
-        $url = 'http://3.90.144.191:9000/users/'.$this->id_transaksi.';';
+        $url = 'http://localhost:9000/users/'.$this->id_transaksi.';';
         
         $data = array(
             'statusTransaksi'=> $status);

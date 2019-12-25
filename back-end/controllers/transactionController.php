@@ -126,10 +126,10 @@ class TransactionController
         $html .=                 
                        '</div>
                     </div>
-                    <div class="button-transaction">
-                        <button class="delete-button">Delete Review</button>
-                        <button class="edit-button">Edit Review</button>
-                    </div>
+                    <span class="button-transaction">
+                        <button class="delete-button">Delete</button>
+                        <button class="edit-button">Edit</button>
+                    </span>
                 </div>
                 <hr>';
         }

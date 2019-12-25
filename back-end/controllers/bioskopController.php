@@ -74,7 +74,7 @@ class BioskopController
         if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             $access_token = $this->getHeaderAuth();
             $user = new User($connection);
-            $transaction = new Transaction($connection, $id_pengguna);   //,$id_mvovie,$id_seat
+            $transaction = new Transaction($connection, $id_pengguna); 
             $seat = new Seat($connection);
             if ($this->validateAccessToken($user, $connection, $access_token)) {
                 $this->fetchUsername($user, $connection, $access_token);
