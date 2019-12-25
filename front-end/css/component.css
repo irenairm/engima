@@ -441,6 +441,13 @@ hr {
     color: white;
 }
 
+.seat-colored{
+    background-color: rgb(241, 239, 240);
+    border-color: rgb(178, 178, 178);
+    color: rgb(179, 177, 178);
+    pointer-events: none;
+    cursor: not-allowed;
+}
 #booking-message {
     width: 50%;
     float: right;
@@ -760,7 +767,8 @@ th .red {
 
 .profile-pic {
     width: 1%;
-    padding-top: 0rem;
+    padding-top: 1rem;
+    padding-left:1 rem;
     padding-bottom: 2.5rem;
 }
 
@@ -778,7 +786,7 @@ th .red {
 
 .review-message {
     width: 80%;
-    padding-top: 1rem;
+    padding-top: 0.4rem;
     padding-bottom: 0;
 }
 
@@ -870,7 +878,7 @@ th .red {
 }
 
 .icon-detail {
-    margin-top: 10.5%;
+    margin-top: 35%;
     margin-left: 10px;
     color: rgb(0, 192, 236);
 }
@@ -956,6 +964,9 @@ th .red {
     font-weight: bold;
 }
 
+.modal-auth.schedule{
+    margin-left: 0;
+}
 .schedule {
     background-color: white;
     margin-left: 1.5rem;

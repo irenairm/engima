@@ -42,6 +42,7 @@ function handleResponse (response, page) {
     if (response.status_code === '200') {
         // Change max_page global variable.
         max_page = Math.ceil(response.count / 5);
+        console.log("MAX_ PAGE: ", max_page);
         showPaginationButtons(max_page, page);
         document.getElementById('page').innerHTML = response.message;
     } else {
@@ -66,6 +67,15 @@ function showPaginationButtons (page_count, page) {
         }
     }
     document.getElementById('buttons').innerHTML = html_element;
+
+    if (page_count == 1){
+        var hide = document.getElementById('back');
+        hide.style.visibility = "hidden";
+        var hide_next = document.getElementById('next');
+        hide_next.style.visibility = "hidden";
+        
+        document.getElementById('1').style.visibility = 'hidden';
+    }
 }
 
 function isMovieDetail (movieID) {

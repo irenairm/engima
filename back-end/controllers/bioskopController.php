@@ -188,8 +188,7 @@ class BioskopController
         //         $va = $i;
         //     }
         // }
-        
-        $size = sizeof($transactions['values'])-1;
+
         // foreach ($transactions as $trans) {
         $html .= '<div class="seat-row">
                 <button class="screen-img" type="button" disabled>Screen</button>
@@ -219,14 +218,8 @@ class BioskopController
                     <div class="modal-content">
                         <div class="modal-text">
                             <h2 class="message-pay">Please do the payment transaction</h2>
-                            <span>
-                                <p class="message-directing">ID Transaksi : </p>
-                                <p class="message-directing" id="id_transaksi">'. $transactions['values'][$size]['id_transaksi'] .'</p>
-                            </span>
-                            <span>
-                                <p class="message-directing">No Virtual Akun : </p>
-                                <p class="message-directing" id="no_va">'. $transactions['values'][$size]['nomor_akun_virtual'] .'</p>
-                            </span>
+                            <p class="message-directing" id="id_transaksi">'. $transactions[1]['id_transaksi'] .'</p>
+                            <p class="message-directing" id="no_va">'. $transactions[1]['nomor_akun_virtual'] .'</p>
                             <button class="mod" id="modal-button" type="submit">Go to transaction history</button>
                         </div>
                     </div>

@@ -77,11 +77,11 @@ class HomeController
     {
         $movie = new Movie($connection);
         $movies_arr = $movie->getAllMovies($connection);
-        if ($movies_arr != '500') {
+        // if ($movies_arr != '500') {
             $this->render($movies_arr);
-        } else {
-            returnResponse('500', 'Internal Server Error.');
-        }
+        // } else {
+        //     returnResponse('500', 'Internal Server Error.');
+        // }
     }
 
     public function getAllMoviesWithKeyword($connection, $params)
@@ -91,7 +91,7 @@ class HomeController
         // Count rows in movies_arr:
         if (count($movies_arr) != 0) {
             $count_arr = $movie->countAllMoviesWithKeyWord($connection, $params);
-            $count = $count_arr[0];
+            $count = $count_arr;
             $this->renderSearchFound($movies_arr, $count, $params['keyword']);
         } else {
             $this->renderSearchNotFound($params['keyword']);
@@ -131,6 +131,7 @@ class HomeController
         $html .= '</div>';
         $html .= '<div class="section-search">';
         foreach ($movies_arr as $movie) {
+            if (((strtotime(date("Y-m-d")) - strtotime(date($movie['release_date']))) <= 604800) && ((strtotime(date("Y-m-d")) - strtotime(date($movie['release_date']))) >= 0)) {
             $html .= '<div class="search-card">';
             $html .=    '<div class="image-section">
                             <img class="movie-design" src="https://image.tmdb.org/t/p/w185/' . $movie['poster_path'] .'";">
@@ -145,10 +146,12 @@ class HomeController
                                 <p>'. $movie['overview'] .'</p>
                             </div>';
             $html .=    '</div>';
-            $html .=    '<div id="" class="view-detail fa-lg"> <a href="movie_detail.html?id='. $movie['id'] . '"><p> View details </p>
+            $html .=    '<span id="" class="view-detail fa-lg"> 
+                            <p> View details <a href="movie_detail.html?id='. $movie['id'] . '"></p>
                             <i class="fa fa-arrow-circle-right icon-detail"></i></a>
-                         </div>';
+                         </span>';
             $html .= '</div>';
+        }
         }
         $html .= '</div>';
         returnSearch('200', $html, $count);

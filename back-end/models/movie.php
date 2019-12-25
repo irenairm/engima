@@ -3,14 +3,6 @@
 class Movie
 {
     private $connection;
-    // private $table = 'engima.movie';
-    // Attributes for MYSQL table:
-    // public $id_movie;
-    // public $nama;
-    // public $runtime;
-    // public $tanggal_rilis;
-    // public $sinopsis;
-    // public $poster;
     public $table;
     public $id;
     public $title;
@@ -27,14 +19,6 @@ class Movie
     // Get All Movies
     public function getAllMovies($database)
     {
-        // $query = "SELECT id_movie, nama, poster FROM " . $this->table .";";
-        // $execute = mysqli_query($database, $query);
-        // $result = mysqli_fetch_all($execute, MYSQLI_ASSOC);
-        // if ($result) {
-        //     return $result;
-        // } else {
-        //     return '500';
-        // }
         $result = file_get_contents("https://api.themoviedb.org/3/movie/now_playing?api_key=1c55fae85a93267bd4a366fde9a90a4b&language=en-US");
         $result = json_decode($result, true);
         $table = $result["results"];
@@ -44,52 +28,36 @@ class Movie
 
     public function getAllMoviesWithKeyword($database, $params)
     {
-        $rows_skipped = ($params['page'] - 1) * 5;
-        $query = "SELECT id_movie, nama, sinopsis, poster FROM " . $this->table ." WHERE nama LIKE '%". $params['keyword'] . "%' LIMIT 5 OFFSET ". $rows_skipped . ";";
-        // echo $query;
-        $execute = mysqli_query($database, $query);
-        $result = mysqli_fetch_all($execute, MYSQLI_ASSOC);
-        if ($result) {
-            return $result;
-        }
+        $movies = $this->moviesWithKeyword($params);
+        $offset = ($params['page'] - 1) * 5;
+        $result = array_slice($movies,$offset,5);
+        return $result;
+        
+    }
+    
+    public function moviesWithKeyword($params){
+        $movies = $this->getAllMovies($database);
+        $property = 'title';        
+        $filterBy = $params['keyword']; 
+        $new = array_filter($movies, function ($movies) use ($filterBy) {
+            return (((strtotime(date("Y-m-d")) - strtotime(date($movies['release_date']))) <= 604800) && ((strtotime(date("Y-m-d")) - strtotime(date($movies['release_date']))) >= 0) && preg_match_all("/$filterBy/i", $movies['title']));
+        });
+        return $new;
     }
 
     public function countAllMoviesWithKeyWord($database, $params)
     {
-        $query = "SELECT COUNT(id_movie) FROM " . $this->table ." WHERE nama LIKE '%". $params['keyword'] . "%';";
-        $execute = mysqli_query($database, $query);
-        $result = mysqli_fetch_array($execute);
-        if ($result) {
-            return $result;
-        } else {
-            return '500';
-        }
+        
+        return count($this->moviesWithKeyword($params));
+        
     }
 
     public function getAllAttributes($database,$params)
     {
-        // $query = "SELECT * FROM " . $this->table ." WHERE id_movie = '". $params['id'] . "';";
-        // // echo $query;
-        // $execute = mysqli_query($database, $query);
-        // $result = mysqli_fetch_all($execute, MYSQLI_ASSOC);
-        // if ($result) {
-        //     return $result;
-        // } else {
-        //     return '500';
-        // }
         $api = "https://api.themoviedb.org/3/movie/". $params['id'] ."?api_key=1c55fae85a93267bd4a366fde9a90a4b";
         $result = file_get_contents($api);
         $result = json_decode($result, true);
         
         return $result;
     }
-
-    // public function getGenre($database)
-    // {
-    //     $result = file_get_contents("https://api.themoviedb.org/3/genre/movie/list?api_key=1c55fae85a93267bd4a366fde9a90a4b");
-    //     $result = json_decode($result, true);
-    //     $genre = $result["genres"];
-
-    //     return $genre;
-    // }
 }

@@ -34,7 +34,7 @@ function handleResponse(response) {
         document.querySelector('.transaction-container').innerHTML = response.message;
     } else {
         // Returns HTML
-        window.location.href = FRONT_END_BASE_URL + 'pages/pelarian.html';
+        window.location.href = FRONT_END_BASE_URL + 'pages/transaction.html';
     }
 }
 

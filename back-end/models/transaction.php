@@ -104,6 +104,15 @@ class Transaction
     // Submit username, id_seat, id_schedule
     public function submitTransaction($id_pengguna,$id_movie,$id_seat)
     {
+        // $this->getNewTransactionID($database);
+        // $query = "INSERT INTO " . $this->table
+        //          . " VALUES " . "(" . $this->id_transaction. ", '". $this->username. "', " . $this->id_seat . ", '" . $this->id_schedule ."')";
+        // if (mysqli_query($database, $query)) {
+        //     return '200';
+        // } else {
+        //     return 'Error ' . mysqli_error($database);
+        // }
+
         // Submit transaksi via WS
         $url = "http://3.90.144.191:9000/users/".$id_pengguna.""; 
         $data = array(
@@ -146,16 +155,21 @@ class Transaction
         } else {
             return '500';
         }
+        
+        // result is id_pengguna, nomor_akun_virtual, 
+        // id_film, jadwal_film, kursi_pesanan, waktu_transaksi, status_transaksi,
+        // id_transaksi
     }
+
     public function getFilmTitle ($id_film){
-        // $id_film = 640882;
+        $id_film = 640882;
         $movie_api = file_get_contents("https://api.themoviedb.org/3/movie/$id_film?api_key=1c55fae85a93267bd4a366fde9a90a4b"); //' .$results[$i]['id_film']. '
         $movie = json_decode($movie_api,true);
         return $movie['title'];
         
     }
     public function getFilmPoster ($id_film){
-        // $id_film = 640882;
+        $id_film = 640882;
         $movie_api = file_get_contents("https://api.themoviedb.org/3/movie/$id_film?api_key=1c55fae85a93267bd4a366fde9a90a4b"); //' .$results[$i]['id_film']. '
         $movie = json_decode($movie_api,true);
         return $movie['poster_path'];
