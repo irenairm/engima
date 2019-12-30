@@ -21,7 +21,7 @@ function handleResponse (response) {
         document.querySelector('.body-ticket').innerHTML = response.message;
     } else {
         // Returns HTML
-         window.location.href = FRONT_END_BASE_URL + 'pages/login.html';
+        //  window.location.href = FRONT_END_BASE_URL + 'pages/login.html';
     }
 }
 

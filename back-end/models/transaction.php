@@ -16,6 +16,7 @@ class Transaction
     public $date;
     public $time;
     public $title;
+    public $schedule;
     
     // public function __construct($id_pengguna)   //, $id_movie, $id_seat
     // {
@@ -27,26 +28,28 @@ class Transaction
         $this->connection = $database;
     }
 
-    public function getDate($id_movie){
-        $query = "SELECT DISTINCT date FROM engima.schedule WHERE id_movie = '". $id_movie . "';" ;
+    public function getDate($database){
+        $query = "SELECT date FROM engima.schedule WHERE id_schedule = '".$this->id_schedule."';" ;
         $execute = mysqli_query($database, $query);
-        $result = mysqli_fetch_all($execute, MYSQLI_ASSOC);
-        $this->date = $result;
+        $result = mysqli_fetch_array($execute);
+        $this->date = $result["date"];
+        echo $params['schedule'];
         return $this->date;
     }
-    public function getTime($id_movie){
-        $query = "SELECT time FROM engima.schedule WHERE id_movie = '". $id_movie . "';" ;
+    public function getTime($database){
+        $query = "SELECT time FROM engima.schedule WHERE id_schedule = '".$this->id_schedule."';" ;
         $execute = mysqli_query($database, $query);
-        $result = mysqli_fetch_all($execute, MYSQLI_ASSOC);
-        $this->time = $result;
+        $result = mysqli_fetch_array($execute);
+        $this->time = $result["time"];
         return $this->time;
     }
-    public function setSchedule($id_movie){
-        $query = "STR_TO_DATE(CONCAT(" .$this->getDate($id_movie). ", \' \'," .$this->getTime($id_movie). "), '%Y-%m-%d %H:%i:%s')" ;
-        $execute = mysqli_query($database, $query);
-        $result = mysqli_fetch_all($execute, MYSQLI_ASSOC);
-        $this->jadwal_film = $result;
+    public function setSchedule($database){
+        $this->date = $this->getDate($database);
+        $this->time = $this->getTime($database);
+        $this->schedule = $this->date." ".$this->time;
+        return $this->schedule;
     }
+    
     
     public function http_req($url,$data_json,$method){
         // curl initiate
@@ -58,7 +61,7 @@ class Transaction
         if ($method==='POST'){
             // SET Method as a POST
             curl_setopt($ch, CURLOPT_POST, 1);   
-            // curl_setopt($ch, CURLOPT_HTTPHEADER, array('Content-Type: application/json'));   
+            curl_setopt($ch, CURLOPT_HTTPHEADER, array('Content-Type: application/json'));   
         }
         elseif ($method === 'PUT'){
             // SET Method as a PUT
@@ -83,56 +86,51 @@ class Transaction
     }
 
     public function getVirtualAccount(){
-        $wsdl   = 'http://localhost:8888/WebServiceBank?wsdl';
-        $client = new SoapClient($wsdl, array('trace'=>1));  // The trace param will show you errors stack
-        $accNumEngima = 4017954241577;
-        $request_param = array(
-            "accountNumber" => $accNumEngima
-        );
+        // $wsdl   = 'http://localhost:8888/WebServiceBank?wsdl';
+        // $client = new SoapClient($wsdl, array('trace'=>1));  // The trace param will show you errors stack
+        // $accNumEngima = 4017954241577;
+        // $request_param = array(
+        //     "accountNumber" => $accNumEngima
+        // );
 
-        try
-        {
-            $responce_param = $client->createVirtualAccount($request_param);
-            return $responce_param;
-        //$responce_param =  $client->call("webservice_methode_name", $request_param); // Alternative way to call soap method
-        } 
-        catch (Exception $e) 
-        { 
-            echo $e->getMessage(); 
-        }
-    }
-    // Submit username, id_seat, id_schedule
-    public function submitTransaction($id_pengguna,$id_movie,$id_seat)
-    {
-        // $this->getNewTransactionID($database);
-        // $query = "INSERT INTO " . $this->table
-        //          . " VALUES " . "(" . $this->id_transaction. ", '". $this->username. "', " . $this->id_seat . ", '" . $this->id_schedule ."')";
-        // if (mysqli_query($database, $query)) {
-        //     return '200';
-        // } else {
-        //     return 'Error ' . mysqli_error($database);
+        // try
+        // {
+        //     $responce_param = $client->createVirtualAccount($request_param);
+        //     return $responce_param;
+        // //$responce_param =  $client->call("webservice_methode_name", $request_param); // Alternative way to call soap method
+        // } 
+        // catch (Exception $e) 
+        // { 
+        //     echo $e->getMessage(); 
         // }
+        return 67068566614195817;
+    }
 
+    // Submit username, id_seat, id_schedule
+    public function submitTransaction($id_pengguna,$id_movie,$id_seat,$database)
+    {
         // Submit transaksi via WS
         // http://3.90.144.191:9000/users/
-        $url = "http://localhost:9000/users/".$id_pengguna.""; 
+        $url = "http://localhost:9000/users/".$id_pengguna; 
         $data = array(
             'id_pengguna'=>$id_pengguna,
             'no_akun_virtual'=> $this->getVirtualAccount(),// virtual akun,
             'id_film'=> $id_movie,
-            'jadwal_film'=>$this->setSchedule($id_movie),
+            'jadwal_film'=> $this->setSchedule($database),
             'kursi'=>$id_seat);
         $data_json = json_encode($data);
-        $result = http_req($url,$data_json,'POST');
+       
+        $result = $this->http_req($url,$data_json,'POST');
         // Ubah string JSON menjadi array
-        $result = json_decode($result,TRUE);
+        $respons = json_decode($result,TRUE);
 
-        if ($result['status'] === '200'){
+        if ($respons['status'] == '200'){
             // Return status latest id transaction
-            $this->id_transaction = $result['values'];
+            $this->id_transaction = $respons['values'];
             return '200';
         }
         else{
+            
             return 'ERROR!';
         }
     }
@@ -148,11 +146,13 @@ class Transaction
 
     public function getTransactionByUser($database,$id_pengguna) //, $id_pengguna
     {
-        $api = file_get_contents("http://localhost:9000/users/$id_pengguna"); //". $id_pengguna."
+        $api = file_get_contents("http://localhost:9000/users/".$id_pengguna); //". $id_pengguna."
         $results = json_decode($api, true); 
-       
-        if ($results) {
-            return $results;
+        // var_dump($results);
+        // echo count($results['values']);
+        if ($results['status'] == '200') {
+           
+            return $results['values'];
         } else {
             return '500';
         }
@@ -162,16 +162,17 @@ class Transaction
         // id_transaksi
     }
 
-    public function getFilmTitle ($id_film){
-        $id_film = 640882;
-        $movie_api = file_get_contents("https://api.themoviedb.org/3/movie/$id_film?api_key=1c55fae85a93267bd4a366fde9a90a4b"); //' .$results[$i]['id_film']. '
+    public function getFilmTitle ($id_movie){
+        // echo $id_movie;
+        // $id_movie = $this->id_movie;
+        $movie_api = file_get_contents("https://api.themoviedb.org/3/movie/".$id_movie."?api_key=1c55fae85a93267bd4a366fde9a90a4b"); //' .$results[$i]['id_film']. '
         $movie = json_decode($movie_api,true);
         return $movie['title'];
         
     }
-    public function getFilmPoster ($id_film){
-        $id_film = 640882;
-        $movie_api = file_get_contents("https://api.themoviedb.org/3/movie/$id_film?api_key=1c55fae85a93267bd4a366fde9a90a4b"); //' .$results[$i]['id_film']. '
+    public function getFilmPoster ($id_movie){
+        // $id_movie = $this->id_movie;
+        $movie_api = file_get_contents("https://api.themoviedb.org/3/movie/".$id_movie."?api_key=1c55fae85a93267bd4a366fde9a90a4b"); //' .$results[$i]['id_film']. '
         $movie = json_decode($movie_api,true);
         return $movie['poster_path'];
     }

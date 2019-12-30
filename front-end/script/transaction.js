@@ -10,13 +10,8 @@ document.getElementById('transactions').addEventListener('click', function () {
     window.location.href = FRONT_END_BASE_URL + 'pages/transaction.html';
 })
 
-// document.getElementById('transactions').onclick = function() {
-//     window.location.href = FRONT_END_BASE_URL + 'pages/transaction.html';    
-// }
-
-// document.getElementById('transactions').addEventListener('click', function () {
-//     window.location.assign(FRONT_END_BASE_URL + 'pages/transaction.html');
-//     // window.location.href = FRONT_END_BASE_URL + 'pages/transaction.html?id=' + getIDParams();
+// document.getElementById('add').addEventListener('click', function () {
+//     window.location.href = FRONT_END_BASE_URL + 'pages/userreview.html';
 // })
 
 function getAllMovies(access_token) {

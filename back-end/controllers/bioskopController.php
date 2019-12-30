@@ -22,6 +22,7 @@ class BioskopController
     private $movie = [];
     private $username;
     private $id_user;
+    private $id_movie;
     private function getHeaderAuth()
     {
         foreach (getallheaders() as $name => $value) {
@@ -69,24 +70,27 @@ class BioskopController
     private function fetchID(User $user, $connection, $access_token){
         $this->id_user = $user->fetchID($connection, $access_token);
     }
-    public function submit($id_pengguna, $id_movie, $id_seat, $connection)
+    public function submit($connection, $params)
     {
+        //$id_pengguna, $id_movie, $id_seat,
         if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             $access_token = $this->getHeaderAuth();
             $user = new User($connection);
-            $transaction = new Transaction($connection, $id_pengguna); 
+            // $id_pengguna = $this->fetchID($user,$connection,$access_token);
+            $transaction = new Transaction($connection); 
             $seat = new Seat($connection);
             if ($this->validateAccessToken($user, $connection, $access_token)) {
                 $this->fetchUsername($user, $connection, $access_token);
                 $this->fetchID($user,$connection,$access_token);
                 $data = json_decode(file_get_contents("php://input"));
+                
                 $this->split($seat, $transaction, $data, $connection);
-                $resTrans = $this->insertInfoTransaction($this->username, $transaction, $connection);
+                $resTrans = $this->insertInfoTransaction($this->id_user, $transaction, $connection);
                 $resSeat = $this->insertInfoSeat($seat, $connection);
                 if ($resTrans && $resSeat) {
                     returnResponse('200', 'Data have been inserted.');
                 } else {
-                    returnResponse('500', 'Internal Server Error.');
+                    returnResponse('500', 'Internal Server Error HERE.');
                 }
             }
         } else {
@@ -98,9 +102,10 @@ class BioskopController
     {
         $transaction->id_seat = $data->id_seat;
         $transaction->id_schedule = $data->id_schedule;
+        $transaction->id_movie = $data->id_movie;
         $seat->id_seat = $data->id_seat;
         $seat->id_schedule = $data->id_schedule;
-        $seat->harga = $data->harga;
+        $seat->harga = 45000;
     }
 
     public function getTransactionID(User $user, $connection)
@@ -119,6 +124,9 @@ class BioskopController
             $transaction = new Transaction($connection);
             if ($this->validateAccessToken($user, $connection, $access_token)) {
                 if ($params['schedule'] && $params['id']) { //if exist param, get all seat
+                    $this->id_movie = $params['id'];
+                    $this->fetchID($user,$connection,$access_token);
+                    $transaction->id_pengguna = $this->id_user;
                     $this->getAllAttributes($connection, $params, $seat, $movies, $transaction); //, $transaction, $id_pengguna
                 } else {
                     returnResponse('500', 'Invalid Params.');
@@ -134,12 +142,12 @@ class BioskopController
     {
         $seats_arr = $seat->getStatus($connection, $params);
         $movie = $movies->getAllAttributes($connection, $params);
-        $transactions = $transaction->getTransactionByUser($connection,$id_user); //,$id_pengguna
+        $transactions = $transaction->getTransactionByUser($connection,$transaction->id_pengguna); //,$id_pengguna
         if ($seats_arr != '500' && $movie != '500' &&  $transactions != '500') {
             // $this->transactions = $transaction_arr;
             $this->render($seats_arr, $movie, $transactions);
         } else {
-            returnResponse('500', 'Internal Server Error.');
+            returnResponse('500', 'Internal Server Error here.');
         }
     }
 
@@ -152,7 +160,7 @@ class BioskopController
                             
                             <div class="movie-header">
                                 <div class="title">'. $movie['title'] .' </div>
-                                <div class="showtime">'. $seats_arr[0]['date'] .' - '.$seats_arr[0]['time'] .'';
+                                <div class="showtime">'. date("F d, Y", strtotime($seats_arr[0]['date'])) .' - '.date("g:i A", strtotime($seats_arr[0]['time'])) .'';
         $html .=                '</div>
                             </div>
                     </div>
@@ -166,30 +174,25 @@ class BioskopController
         {   
             if(($seat['id_seat']) % 10 == 0)
             {
-                $html .= '<div class="seat-row">';   
+                
+                if ($seat['status'] == 0) {
+                    $html .=  '<button class="seat" value ="'.$seat['id_seat'].'" id="'.$seat['id_seat'].'" type="submit">'.$seat['id_seat'].'</button></div>';
+                } else {
+                    $html .=  '<button class="seat" value ='.$seat['id_seat'].' id='.$seat['id_seat'].' type="submit" disabled>'.$seat['id_seat'].'</button></div>';
+                } 
+                $html .= '<div class="seat-row">';  
             }
+            else{
             if ($seat['status'] == 0) {
                 $html .=  '<button class="seat" value ="'.$seat['id_seat'].'" id="'.$seat['id_seat'].'" type="submit">'.$seat['id_seat'].'</button>';
-            // } else {
-                //     $html .=  '<button class="seat" value ='.$seat['id_seat'].' id='.$seat['id_seat'].' type="submit" disabled>'.$seat['id_seat'].'</button>';
-                // }
-            }
-            if(($seat['id_seat']+1) % 10 == 0)
-            {
-                $html .= '</div>';   
+            } else {
+                    $html .=  '<button class="seat" value ='.$seat['id_seat'].' id='.$seat['id_seat'].' type="submit" disabled>'.$seat['id_seat'].'</button>';
+                }
             }
         }
 
-        // for ($i=0; $i<count($transaction); $i++){
-        //     if ($this->transaction[$i]['id_transaksi'] == $this->id_transaksi){
-        //         $index = $i;
-        //     }
-        //     if ($this->transation[$i]['nomor_akun_virtual'] == $this->nomor_akun_virtual){
-        //         $va = $i;
-        //     }
-        // }
+        $count = count($transactions);
 
-        // foreach ($transactions as $trans) {
         $html .= '<div class="seat-row">
                 <button class="screen-img" type="button" disabled>Screen</button>
                 </div>
@@ -205,7 +208,7 @@ class BioskopController
                 <div id ="booked">
                     <div class="movie-detail">
                         <p id="movie-selected-title">'.$movie['title'].'</p>
-                        <p id="movie-selected-time">'. $seats_arr[0]['date'] .' - '.$seats_arr[0]['time'] .'</p>
+                        <p id="movie-selected-time">'. date("F d, Y", strtotime($seats_arr[0]['date'])) .' - '. date("g:i A", strtotime($seats_arr[0]['time'])) .'</p>
                     </div>
                     <span class="price-detail">
                         <p id="movie-selected-seat">No seat selected</p>
@@ -218,8 +221,8 @@ class BioskopController
                     <div class="modal-content">
                         <div class="modal-text">
                             <h2 class="message-pay">Please do the payment transaction</h2>
-                            <p class="message-directing" id="id_transaksi">'. $transactions[1]['id_transaksi'] .'</p>
-                            <p class="message-directing" id="no_va">'. $transactions[1]['nomor_akun_virtual'] .'</p>
+                            <span><p class = "message-directing" id="id_transaksi">ID Transaksi : '. $transactions[$count-1]['id_transaksi'] .'</p></span>
+                            <span><p class = "message-directing" id="no_va">No Akun Virtual : '. $transactions[$count-1]['nomor_akun_virtual'] .'</p></span>
                             <button class="mod" id="modal-button" type="submit">Go to transaction history</button>
                         </div>
                     </div>
@@ -236,22 +239,26 @@ class BioskopController
     {
         $result = $seat->submitSeat($connection);
         if ($result == '200') {
-            return true;
+            return True;
         } else {
-            return false;
+            return False;
+            returnResponse('500','FAIL Seat');
         }
     }
 
-    public function insertInfoTransaction($username, Transaction $transaction, $id_pengguna)
+    public function insertInfoTransaction($id_user, Transaction $transaction,$connection)
     {
-        $transaction->username = $username;
-        $id_movie = $transaction->id_movie;
+        $transaction->id_user = $id_user;
         $id_seat = $transaction->id_seat;
-        $result = $transaction->submitTransaction($id_pengguna,$id_movie,$id_seat);
+        $id_user = $transaction->id_user;
+        $id_movie = $transaction->id_movie;
+        $result = $transaction->submitTransaction($id_user,$id_movie,$id_seat,$connection);
         if ($result =='200') {
-            return true;
+            return True;
+            returnResponse('200','Success');
         } else {
-            return false;
+            return False;
+            returnResponse('500','FAIL TRANS');
         }
     }
 }

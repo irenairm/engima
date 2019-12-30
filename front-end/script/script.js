@@ -2,13 +2,9 @@ import { FRONT_END_BASE_URL, BACK_END_BASE_URL } from '../utils/const.js';
 import { sendAJAXRequest } from '../utils/ajax.js';
 import { getCookie } from '../utils/cookie.js';
 
-// var button = document.getElementById("button-buy");
-// var modal = document.getElementById("modal");
+
 var seat = document.querySelectorAll("button.seat");
-// var not_booked = document.getElementById("booking-message").children;
-var go_transaction = document.getElementById('modal-button');
-// var child = document.getElementById("booked").children;
-// var current_seat = null;
+
 
 //Change seat number when clicked button
 // Get id of seat
@@ -17,8 +13,12 @@ window.onclick = e => {
     if (e.target.id >=1 && e.target.id<=30){
         document.getElementById("book-msg").innerHTML = "";
         document.getElementById("booked").style.display = "block";
-        document.getElementById("movie-selected-seat").innerHTML = "Seat#" + e.target.id;
+        document.getElementById("movie-selected-seat").innerHTML = "Seat #" + e.target.id;
+        var current_seat = e.target.id;
+        // When button "Buy Ticket" is clicked, send info to backend
         document.getElementById("button-buy").onclick = function(){
+            
+            fetchInfo(current_seat);
             document.getElementById("modal").style.display = "block";
             document.getElementById("modal-button").onclick = function() {
                 window.location.href = FRONT_END_BASE_URL + 'pages/transaction.html';
@@ -27,56 +27,21 @@ window.onclick = e => {
     }
 }
 
-// document.getElementById("button-buy").onclick = function() {
-//     window.location.href = FRONT_END_BASE_URL + 'pages/transaction.html';
-// }
-
-// button.onclick = function(){
-// //    modal.style.display= "block"; //show block
-//     alert('a');
-    // document.getElementById("modal").style.display = "block";
-    // document.getElementById("modal-content").style.display = "block";
-    // document.getElementById("modal-text").style.display = "block";
-
-    //document.getElementById(e.target.id).disabled = true;
-    // console.log('tesuto');
-// }
-
-// Show movie details when clicked on seat
-// var i;
-
-// for (i=0; i<seat.length; i++){
-//     seat[i].addEventListener('click', function() {
-//         not_booked[1].style.display = "none";
-//         not_booked[2].style.display = "block";
-//     })
-// }
-
-go_transaction.onclick = function(){
-    startSendingInfo();
-}
-
-function startSendingInfo(){
-    fetchInfo();
-}
-
 // Fetch information when user booked a seat and send to backend
-function fetchInfo (){
-    var id_schedule = 1;
-    var id_movie = 1;
+function fetchInfo (current_seat){
+    var id_schedule = getIDSchedule();
+    var id_movie = getIDMovie();
     var seat_booked = current_seat;
-    var harga = 45000;
     var access_token = getAccessToken();
-    sendInformationToBackEnd(id_schedule, id_movie, seat_booked, harga, access_token);
+    sendInformationToBackEnd(id_schedule, id_movie, seat_booked, access_token);
 }
 
 // Make JSON to send to PHP
-function makeBioskopJSON (id_schedule, id_movie, id_seat, harga) {
+function makeBioskopJSON (id_schedule, id_movie, id_seat) {
     return  {
         "id_schedule":id_schedule,
         "id_movie":id_movie,
-        "id_seat":id_seat,
-        "harga": harga
+        "id_seat":id_seat
     }
 }
 
@@ -84,8 +49,8 @@ function getAccessToken () {
     return getCookie('Authorization');
 }
 
-function sendInformationToBackEnd (id_schedule, id_movie, id_seat, harga, access_token) {
-    var payload = makeBioskopJSON(id_schedule, id_movie, id_seat, harga);
+function sendInformationToBackEnd (id_schedule, id_movie, id_seat, access_token) {
+    var payload = makeBioskopJSON(id_schedule, id_movie, id_seat);
     var url = BACK_END_BASE_URL + 'bioskop/submit';
     sendAJAXRequest(payload, "POST", url, function(response) {
         handleBioskopResponse(response);
@@ -101,14 +66,14 @@ function handleBioskopResponse(response){
     }
 }
 
-function getIdMovie () {
+function getIDMovie () {
     var url = new URL(window.location.href);
-    var keyword = url.searchParams.get("id_movie");
+    var keyword = url.searchParams.get("id");
     return keyword;
 }
 
-function getIdSchedule () {
+function getIDSchedule () {
     var url = new URL(window.location.href);
-    var keyword = url.searchParams.get("id_schedule");
+    var keyword = url.searchParams.get("schedule");
     return keyword;
 }

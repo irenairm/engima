@@ -18,12 +18,13 @@ class Seat
     public function submitSeat($database)
     {
         $query = "UPDATE " . $this->table
-                 . " SET id_seat = " . $this->id_seat. " WHERE id_schedule = '" . $this->id_schedule . "'AND harga = " . $this->harga .";";
-        echo $query;
-        if (mysqli_query($database, $query)) {
+                 . " SET STATUS = '1' WHERE id_seat = '" . $this->id_seat. "' AND id_schedule = '" . $this->id_schedule . "';";
+        // echo $query;
+        $execute = mysqli_query($database, $query);
+        if ($execute) {
             return '200';
         } else {
-            return 'Error ' . mysqli_error($database);
+            return '500';
         }
     }
 
@@ -38,17 +39,5 @@ class Seat
         //     return '500';
         // }
         return $result;
-    }
-
-    public function setStatus($database, $status, $id_seat, $id_schedule){
-        $query = "
-        UPDATE " . $this->table . " SET status = " .$status. "WHERE id_seat = " .$id_seat. "and id_schedule = " .$id_schedule. ";";
-        $execute = mysqli_query($database, $query);
-        $result = mysqli_fetch_all($execute, MYSQLI_ASSOC);
-        if ($result) {
-            return $result;
-        } else {
-            return '500';
-        }
     }
 }
