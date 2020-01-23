@@ -1,4 +1,4 @@
-# Tugas 1 IF3110 Pengembangan Aplikasi Berbasis Web
+# Tugas IF3110 Pengembangan Aplikasi Berbasis Web
 
 ## Deskripsi Singkat Aplikasi
 
@@ -48,10 +48,8 @@ User Review
 # Pembagian Tugas
 
 ## ReactJS (App Bank Pro)
-- Login (Irena 13517100, Arnold 13517022)
-- Halaman Utama (Syaiful 13517139, Irena 13517100)
-- Melakukan Transfer (Arnold 13517022, Syaiful 13517139)
-- Melihat Riwayat Transaksi (Irena 13517100, Arnold 13517022)
+UI, Front End: Irena
+Front End, Back End: Syaiful
 
 
 
@@ -67,17 +65,42 @@ User Review
 
 
 ## REST (WS Transaksi)
-- Fungsi add transaksi baru (Syaiful 13517139, Irena 13517100)
-- Fungsi ubah status transaksi (Arnold 13517022, Syaiful 13517139)
-- Fungsi get all data transaksi user (Irena 13517100, Arnold 13517022)
-- Basis data transaksi tiket (Syaiful 13517139, Irena 13517100)
+- Fungsi add transaksi baru (Irena)
+- Fungsi ubah status transaksi (Irena)
+- Fungsi get all data transaksi user (Arnold)
+- Basis data transaksi tiket (Irena, Arnold)
 
 
+## Engima
+Frontend
+
+- Login : Irena
+- Register : Irena, Edward
+- Home : Edward
+- Search Result : Irena, Edward
+- Film Detail : Irena
+- Buy Ticket : Irena
+- Transaction History : Irena
+- User Review : Irena
+
+
+Backend
+
+- Login : Edward
+- Register : Edward
+- Home :  Edward
+- Search Result :  Edward, Irena
+- Film Detail :  Edward, Irena
+- Buy Ticket : Irena
+- Transaction History : Irena
+- User Review : Irena
+- Database : Nurdin, Irena
 
 ## Perubahan Engima
-- Basis data TheMovieDB (Arnold 13517022, Syaiful 13517139)
-- Home (Irena 13517100, Arnold 13517022)
-- Film Details (Syaiful 13517139, Irena 13517100)
-- Buy Ticket (Arnold 13517022, Syaiful 13517139)
-- Transaction History (Irena 13517100, Arnold 13517022)
-- Basis data Engima (Syaiful 13517139, Irena 13517022)
+- Basis data TheMovieDB (Arnold, Irena)
+- Home (Irena, Arnold)
+- Film Details (Irena, Arnold)
+- Buy Ticket (Irena, Arnold)
+- Transaction History (Irena, Arnold)
+- Basis data Engima (Irena, Arnold)
+
