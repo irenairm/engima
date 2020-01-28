@@ -114,6 +114,7 @@ class User
                  . $attribute . " =  " . "'" . $value . "'";
         $execute = mysqli_query($database, $query);
         $result = mysqli_fetch_array($execute);
+        echo $result;
         if ($result) {
             return false;
         } else {

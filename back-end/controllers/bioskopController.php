@@ -183,9 +183,9 @@ class BioskopController
                 $html .= '<div class="seat-row">';  
             }
             else{
-            if ($seat['status'] == 0) {
-                $html .=  '<button class="seat" value ="'.$seat['id_seat'].'" id="'.$seat['id_seat'].'" type="submit">'.$seat['id_seat'].'</button>';
-            } else {
+                if ($seat['status'] == 0) {
+                    $html .=  '<button class="seat" value ="'.$seat['id_seat'].'" id="'.$seat['id_seat'].'" type="submit">'.$seat['id_seat'].'</button>';
+                } else {
                     $html .=  '<button class="seat" value ='.$seat['id_seat'].' id='.$seat['id_seat'].' type="submit" disabled>'.$seat['id_seat'].'</button>';
                 }
             }
@@ -222,7 +222,8 @@ class BioskopController
                         <div class="modal-text">
                             <h2 class="message-pay">Please do the payment transaction</h2>
                             <span><p class = "message-directing" id="id_transaksi">ID Transaksi : '. $transactions[$count-1]['id_transaksi'] .'</p></span>
-                            <span><p class = "message-directing" id="no_va">No Akun Virtual : '. $transactions[$count-1]['nomor_akun_virtual'] .'</p></span>
+                            <span><p class = "message-directing" id="no_va">Please pay to this number : </p>
+                            <p class = "message-directing">No Akun Virtual : '. $transactions[$count-1]['nomor_akun_virtual'] .' </p></span>
                             <button class="mod" id="modal-button" type="submit">Go to transaction history</button>
                         </div>
                     </div>

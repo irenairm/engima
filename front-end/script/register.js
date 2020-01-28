@@ -122,7 +122,7 @@ function handleSuccessResponse () {
     document.getElementById('password').style.borderColor = "green";
     document.getElementById('reconfirmPassword').style.borderColor = "green";
     document.getElementById('file-name').style.borderColor = "green";
-    // window.location.href = FRONT_END_BASE_URL + 'pages/login.html';
+    window.location.href = FRONT_END_BASE_URL + 'pages/login.html';
 }
 
 // This function is fetched from https://stackoverflow.com/questions/6150289/how-to-convert-image-into-base64-string-using-javascript

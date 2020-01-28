@@ -96,6 +96,7 @@ class Transaction
         // try
         // {
         //     $responce_param = $client->createVirtualAccount($request_param);
+            // $this->no_akun_virtual = $responce_param;
         //     return $responce_param;
         // //$responce_param =  $client->call("webservice_methode_name", $request_param); // Alternative way to call soap method
         // } 
@@ -137,10 +138,6 @@ class Transaction
 
     public function getNewTransactionID()
     {
-        // $query = "SELECT COUNT(id_transaction) FROM " . $this->table . ";";
-        // $execute = mysqli_query($database, $query);
-        // $result = mysqli_fetch_array($execute);
-        // $this->id_transaction = $result[0] + 1;
         return $this->id_transaction;
     }
 
@@ -182,23 +179,65 @@ class Transaction
         $data = array(
             'statusTransaksi'=> $status);
         $data_json = json_encode($data);
-        $result = http_req($url,$data_json,'PUT');
-        $this->status = $status;
-        return $this->status;
-    }
+        $result = $this->http_req($url,$data_json,'PUT');
+        // Ubah string JSON menjadi array
+        $respons = json_decode($result,TRUE);
 
-    public function isTwoMinutes(){
-        // // microtime(true) returns the unix timestamp plus milliseconds as a float
-        // $starttime = microtime(true);
-        // /* do stuff here */
-        // $endtime = microtime(true);
-        // $timediff = $endtime - $starttime;
+        if ($respons['status'] == '200'){
+            // Return status latest id transaction
 
-        if ($timedif === 120){
-            return True;
+            return '200';
         }
         else{
-            return False;
+            
+            return 'ERROR!';
+        }
+        
+    }
+
+    public function checkBank($no_akun_virtual){
+        // Cek WS Bank, ambil datanya. Cek apakah ada pembayaran ke virtual account itu
+                // $wsdl   = 'http://localhost:8888/WebServiceBank?wsdl';
+        // $client = new SoapClient($wsdl, array('trace'=>1));  // The trace param will show you errors stack
+        // $resipien = $no_akun_virtual;
+        // $request_param = array(
+        //     "recipientsAccountNumber" => $resipien,
+        //      "amount" => 45000,
+        //      "startDate" => strtotime($this->schedule),
+        //      "endDate" => strtotime("+2 minutes",strtotime($t['waktu_transaksi']))
+        // );
+
+        // try
+        // {
+        //     $responce_param = $client->checkCreditTransaction($request_param);
+        //      if ($response_param === ''200){
+            //  $alreadypaid = True;
+        // }
+        // else {$alreadypaid = False;}
+        //   //  return $responce_param;
+        // //$responce_param =  $client->call("webservice_methode_name", $request_param); // Alternative way to call soap method
+        // } 
+        // catch (Exception $e) 
+        // { 
+        //     echo $e->getMessage(); 
+        // }
+        $alreadypaid = True;
+        if ($alreadypaid){
+            $this->changeTransactionStatus($id_transaksi,"SUCCESS");
+        }
+    }
+
+    // For every pending transaction, kalau udah dua menit ganti status jadi cancel. Kalau belum panggil ws bank
+    public function isTwoMinutes($id_transaksi,$id_pengguna,$no_akun_virtual){
+        $rightnow = (date('Y-m-d H:i A'));
+        $trans_arr = $this->getTransactionByUser($database, $id_pengguna);
+        foreach ($trans_arr as $t) {
+            if ($rightnow > date('Y-m-d H:i A',strtotime("+2 minutes",strtotime($t['waktu_transaksi'])))){
+               $this->changeTransactionStatus($id_transaksi,"CANCELLED");
+            }
+            else{
+               $this>checkBank($no_akun_virtual);
+            }
         }
     }
 

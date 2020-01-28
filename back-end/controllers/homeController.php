@@ -163,7 +163,7 @@ class HomeController
         $html .=    '<h3> Showing search result for keyword "<span id="keyword">'. $keyword . '</span>" </h3>';
         $html .=    '<h4 class="tagline"> 0 results available </h4>';
         $html .= '</div>';
-        $html .= '<div class="section-search">';
+        // $html .= '<div class="section-search">';
         returnResponse('200', $html);
     }
 }

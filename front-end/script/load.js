@@ -58,6 +58,7 @@ function getKeywordParams () {
 }
 
 function showPaginationButtons (page_count, page) {
+    console.log("PAGE COUTN: ", (isNaN(page_count)));
     var html_element = '';
     for (let id = 1; id <= page_count; id++) {
         if (id != page) {
@@ -65,16 +66,31 @@ function showPaginationButtons (page_count, page) {
         } else {
             html_element += '<button id=' + id + ' class="seat seat-colored" type="submit"> ' + id + ' </button>';
         }
+
+        if (id == 1) {
+           document.getElementById('back').disabled = true;
+            
+        }
+        if ((id == page_count)){
+            document.getElementById('back').disabled = true;
+        }
     }
     document.getElementById('buttons').innerHTML = html_element;
 
-    if (page_count == 1){
+    if ((page_count == 1)){
         var hide = document.getElementById('back');
         hide.style.visibility = "hidden";
         var hide_next = document.getElementById('next');
         hide_next.style.visibility = "hidden";
         
         document.getElementById('1').style.visibility = 'hidden';
+    }
+
+    if ((isNaN(page_count))){
+        var hide = document.getElementById('back');
+        hide.style.visibility = "hidden";
+        var hide_next = document.getElementById('next');
+        hide_next.style.visibility = "hidden";
     }
 }
 

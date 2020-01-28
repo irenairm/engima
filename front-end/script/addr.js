@@ -4,33 +4,24 @@ import { getCookie } from '../utils/cookie.js';
 
 var access_token = getCookie('Authorization');
 
-getStatus(access_token); // Get seats before loading
-
+// getAllReviews(access_token);
+getStatus(access_token);
+// Show page to add review
 function getStatus (access_token) {
-    var url = BACK_END_BASE_URL + 'bioskop/fetch?schedule=' + getIDParams() +'&id=' + getIDFParams();
+    var url = BACK_END_BASE_URL + 'review/fetch?id=' + getIDFParams();
     console.log('url: ', url); 
     sendAJAXRequest(null, "GET", url, function (response) { 
         console.log('response: ', response.message);
         handleResponse(response);
     }, access_token);
 }
-
-// This function utilizes AJAX to send to backend server.
 function handleResponse (response) {
     if (response.status_code === '200') {
         document.querySelector('.container-ticket').innerHTML = response.message;
-    } 
-    else {
+    } else {
         // Returns HTML
-        //  window.location.href = FRONT_END_BASE_URL + 'pages/pelarian.html';
-        alert(response.message);
+         window.location.href = FRONT_END_BASE_URL + 'pages/';
     }
-}
-
-function getIDParams () {
-    var url = new URL(window.location.href);
-    var id = url.searchParams.get("schedule");
-    return id;
 }
 
 function getIDFParams () {
@@ -38,3 +29,6 @@ function getIDFParams () {
     var id = url.searchParams.get("id");
     return id;
 }
+
+var id_movie = getIDFParams();
+

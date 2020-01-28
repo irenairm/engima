@@ -41,6 +41,21 @@ class Review
         }
     }
 
+    public function getAllMovieReviews($database, $username)
+    {
+        $query = "SELECT description,rating,id_movie
+                  FROM " .  $this->table . "
+                  WHERE
+                  username = '".$username."';";
+        // echo $query;
+        $execute = mysqli_query($database, $query);
+        $result = mysqli_fetch_all($execute, MYSQLI_ASSOC);
+        if ($result) {
+            return $result;
+        } else {
+            return '500';
+        }
+    }
     // Get average rating
     public function getAverageRatings($database, $params)
     {

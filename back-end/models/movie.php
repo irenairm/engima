@@ -60,4 +60,12 @@ class Movie
         
         return $result;
     }
+
+    public function getMovieAttributes($attr){
+        $api = "https://api.themoviedb.org/3/movie/". $attr ."?api_key=1c55fae85a93267bd4a366fde9a90a4b";
+        $result = file_get_contents($api);
+        $result = json_decode($result, true);
+        
+        return $result;
+    }
 }

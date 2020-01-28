@@ -99,6 +99,12 @@ class TransactionController
         if ($transaction_arr != '500')
         {
             // echo 'tesuto';
+            // foreach ($transaction_arr as $movie){
+            //     if ($movie['status_transaksi']=="PENDING"){
+            //         $transaction->isTwoMinutes($movie['id_transaksi'],$movie['$id_pengguna'],$movie['no_akun_virtual']);
+                
+            //     }
+            // }
             $this->render($transaction, $transaction_arr);
         }   
     }
@@ -114,7 +120,7 @@ class TransactionController
    public function render($transaction, $transaction_arr)    //$transaction_arr, $username, $connection
     {
         $html .= '
-        <div class="transaction-container">
+       
         
                 <div class="transaction-header">
                     Transaction History
@@ -125,7 +131,7 @@ class TransactionController
                     $transgetFilm = $transaction->getFilmTitle($movie['id_film']);
                     $transgetPoster = $transaction->getFilmPoster($movie['id_film']);  
                 $html .= '<img src="https://image.tmdb.org/t/p/w185/' . $transgetPoster .'" class="movie-poster">
-                            <div class="judul">'. $transgetFilm .'</div>
+                            <div class="judul" id="judul">'. $transgetFilm .'</div>
                             <div class="schedule">
                                 <span class="schedule">
                                     Schedule
@@ -141,6 +147,7 @@ class TransactionController
                                 <span id="id_transaction">'
                                 .$movie['id_transaksi']. '</span>
                             </div>';
+            
             $html  .=      ' <div class="trans-detail">
                                 <span class="schedule">Status</span>
                                 <span id="status_trans">'
@@ -156,8 +163,8 @@ class TransactionController
                     
                     '
                         <span class="button-transaction">
-                            <button class="delete-button" id="delete">Delete Review</button>
-                            <button class="edit-button" id="edit">Edit Review</button>
+                            <a type="button" class="delete-button" id="delete" href="userreview.html?id='.$movie['id_film'].'">Delete Review</a>
+                            <a type="button" class="edit-button" id="edit" href="userreview.html?id='.$movie['id_film'].'">Edit Review</a>
                         </span>
                     
                         ';
@@ -167,7 +174,7 @@ class TransactionController
                     
                     '
                         <span class="button-transaction">
-                            <button class="edit-button" id="add">Add Review</button>
+                            <a type="button" class="add-button" id="add" href="userreview.html?id='.$movie['id_film'].'">Add Review</a>
                         </span>
                         
                     ';
@@ -176,8 +183,9 @@ class TransactionController
             }
         $html .= '<hr> ';
         }
-        $html .= '</div>';
+      //  $html .= '</div>';
 
         returnResponse('200', $html);
-}}
+    }
+}
 

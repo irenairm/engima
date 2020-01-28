@@ -176,8 +176,8 @@ class UserController
             $this->setRegisterEmailError();
         }
         // Phone Number
-        if ($this->validatePhone($data->no_hp)) {
-            $user->no_hp = $data->no_hp;
+        if ($this->validatePhone($data->no_telp)) {
+            $user->no_telp = $data->no_telp;
         } else {
             $this->setPhoneError();
         }
@@ -213,10 +213,10 @@ class UserController
         return $validated;
     }
 
-    private function validatePhone($no_hp)
+    private function validatePhone($no_telp)
     {
         $validated = false;
-        if (preg_match("/^(\d{9}|\d{12})$/", $no_hp)) {
+        if (preg_match("/^(\d{9}|\d{12})$/", $no_telp)) {
             $validated = true;
         }
         return $validated;
@@ -293,7 +293,7 @@ class UserController
 
     private function setPhoneError()
     {
-        $this->register_error_array['no_hp'] = 'Phone number can only contain numbers (9-12 digits).';
+        $this->register_error_array['no_telp'] = 'Phone number can only contain numbers (9-12 digits).';
         $this->is_register_validated = false;
     }
 
@@ -317,8 +317,8 @@ class UserController
         if (!$user->validateDuplicate($connection, $user->email, 'email')) {
             $this->setDuplicatedValueError($user->email, 'email');
         }
-        if (!$user->validateDuplicate($connection, $user->no_hp, 'no_hp')) {
-            $this->setDuplicatedValueError($user->no_hp, 'no_hp');
+        if (!$user->validateDuplicate($connection, $user->no_telp, 'no_telp')) {
+            $this->setDuplicatedValueError($user->no_telp, 'no_telp');
         }
     }
 }

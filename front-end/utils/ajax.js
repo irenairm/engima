@@ -25,3 +25,33 @@ export function sendAJAXRequest (payload, method_request, url, callback, auth) {
         xhr.send(null);
     }
 }
+
+export function soap(method_request,param,paramValue) {
+    var xmlhttp = new XMLHttpRequest();
+    xmlhttp.open('POST', 'http://localhost:8888/WebServiceBank?wsdl', true);
+
+    // build SOAP request
+    var sr =
+    `<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:kas="http://kasatukelima.wsbank/">
+    <soapenv:Header/>
+    <soapenv:Body>
+        <kas:` +method_request+ `>
+          <` +param+ `>` + paramValue+ `</` +param+ `>
+        </kas:` +method_request+ `>
+    </soapenv:Body>
+  </soapenv:Envelope>`;
+
+    xmlhttp.onreadystatechange = function () {
+        if (xmlhttp.readyState == 4) {
+            if (xmlhttp.status == 200) {
+                alert(xmlhttp.responseText);
+                // alert('done. use firebug/console to see network response');
+            }
+        }
+    }
+    // Send the POST request
+    xmlhttp.setRequestHeader('Content-Type', 'text/xml');
+    xmlhttp.send(sr);
+    // send request
+    // ...
+}
